@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "productName": "NueHair",
+        "productDetail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ullam ad consequuntur laudantium eum, voluptatibus eaque modi et repudiandae quidem, incidunt eos minus sunt accusamus? Architecto quaerat et obcaecati porro voluptas iusto, fuga, optio voluptas animi dolor molestiae totam consequuntur aliquam minima obcaecati, officia nam! Eius nesciunt, iste delectus dicta similique consectetur! Magni impedit alias sint minima exercitationem?",
+        "category": "Hair Care",
+        "productQuantity": 5,
+        "productImage": "/assets/products/4.png",
+        "price": "20"
+    },
+    {
+        "id": 2,
+        "productName": "Sonnpro",
+        "productDetail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ullam ad consequuntur laudantium eum, voluptatibus eaque modi et repudiandae quidem, incidunt eos minus sunt accusamus? Architecto quaerat et obcaecati porro voluptas iusto, fuga, optio vitae odio debitis possimus non maxime, illum ex ullam? Sit, excepturi delectus. Pariatur quia, labore magni sed sequi voluptatem voluptates. Totam quae, praesentium perferendis labore impedit non natus ipsa voluptatem, sunt, ratione voluptate est iste a! Rem error quae alias, rerum excepturi reprehenderit qui a veniam libero in sed nisi, commodi, labore officiis. Voluptates dolorem doloribus quia inventore, dicta tenetur blanditiis vero voluptatibus maxime alias nemo aliquam sapiente dolore, exercitationem tempora? Quod, temporibus. Quis repudiandae neque at? Facilis cum earum sunt laudantium impedit officiis distinctio soluta placeat odit aperiam. Nemo a porro repellendus aperiam. Quia alias reiciendis harum fuga exercitationem, temporibus consequuntur earum? Nisi earum voluptas sequi minima possimus deleniti saepe ipsam itaque ab vero, voluptatem sed et temporibus. Totam rerum a cum earum aut. Deserunt doloremque perferendis suscipit alias molestias doloribus dignissimos incidunt eligendi explicabo illo ipsa ullam, optio dolorem, assumenda voluptas animi dolor molestiae totam consequuntur aliquam minima obcaecati, officia nam! Eius nesciunt, iste delectus dicta similique consectetur! Magni impedit alias sint minima exercitationem?",
+        "category": "Whitening",
+        "productQuantity": 5,
+        "productImage": "/assets/products/5.png",
+        "price": "30"
+    },
+    {
+        "id": 3,
+        "productName": "key-ac",
+        "productDetail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ullam ad consequuntur laudantium eum, voluptatibus eaque modi et repudiandae quidem, incidunt eos minus sunt accusamus? Architecto quaerat et obcaecati porro voluptas iusto, fuga, optio vitae odio debitis possimus non maxime, illum ex ullam? Sit, excepturi delectus. Pariatur quia, labore magni sed sequi voluptatem voluptates. Totam quae, praesentium perferendis labore impedit non natus ipsa voluptatem, sunt, ratione voluptate est iste a! Rem error quae alias, rerum excepturi reprehenderit qui a veniam libero in sed nisi, commodi, labore officiis. Voluptates dolorem doloribus quia inventore, dicta tenetur blanditiis vero voluptatibus maxime alias nemo aliquam sapiente dolore, exercitationem tempora? Quod, temporibus. Quis repudiandae neque at? Facilis cum earum sunt laudantium impedit officiis distinctio soluta placeat odit aperiam. Nemo a porro repellendus aperiam. Quia alias reiciendis harum fuga exercitationem, temporibus consequuntur earum? Nisi earum voluptas sequi minima possimus deleniti saepe ipsam itaque ab vero, voluptatem sed et temporibus. Totam rerum a cum earum aut. Deserunt doloremque perferendis suscipit alias molestias doloribus dignissimos incidunt eligendi explicabo illo ipsa ullam, optio dolorem, assumenda voluptas animi dolor molestiae totam consequuntur aliquam minima obcaecati, officia nam! Eius nesciunt, iste delectus dicta similique consectetur! Magni impedit alias sint minima exercitationem?",
+        "category": "Sunblock",
+        "productQuantity": 5,
+        "productImage": "/assets/products/6.png",
+        "price": "20"
+    },
+    {
+        "id": 4,
+        "productName": "kimsoft",
+        "productDetail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ullam ad consequuntur laudantium eum, voluptatibus eaque modi et repudiandae quidem, incidunt eos minus sunt accusamus? Architecto quaerat et obcaecati porro voluptas iusto, fuga, optio vitae odio debitis possimus non maxime, illum ex ullam? Sit, excepturi delectus. Pariatur quia, labore magni sed sequi voluptatem voluptates. Totam quae, praesentium perferendis labore impedit non natus ipsa voluptatem, sunt, ratione voluptate est iste a! Rem error quae alias, rerum excepturi reprehenderit qui a veniam libero in sed nisi, commodi, labore officiis. Voluptates dolorem doloribus quia inventore, dicta tenetur blanditiis vero voluptatibus maxime alias nemo aliquam sapiente dolore, exercitationem tempora? Quod, temporibus. Quis repudiandae neque at? Facilis cum earum sunt laudantium impedit officiis distinctio soluta placeat odit aperiam. Nemo a porro repellendus aperiam. Quia alias reiciendis harum fuga exercitationem, temporibus consequuntur earum? Nisi earum voluptas sequi minima possimus deleniti saepe ipsam itaque ab vero, voluptatem sed et temporibus. Totam rerum a cum earum aut. Deserunt doloremque perferendis suscipit alias molestias doloribus dignissimos incidunt eligendi explicabo illo ipsa ullam, optio dolorem, assumenda voluptas animi dolor molestiae totam consequuntur aliquam minima obcaecati, officia nam! Eius nesciunt, iste delectus dicta similique consectetur! Magni impedit alias sint minima exercitationem?",
+        "category": "Acne",
+        "productQuantity": 5,
+        "productImage": "/assets/products/7.png",
+        "price": "90"
+    },
+    {
+        "id": 5,
+        "productName": "kimsoft",
+        "productDetail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ullam ad consequuntur laudantium eum, voluptatibus eaque modi et repudiandae quidem, incidunt eos minus sunt accusamus? Architecto quaerat et obcaecati porro voluptas iusto, fuga, optio vitae odio debitis possimus non maxime, illum ex ullam? Sit, excepturi delectus. Pariatur quia, labore magni sed sequi voluptatem  harum fuga exercitationem, temporibus consequuntur earum? Nisi earum voluptas sequi minima possimus deleniti saepe ipsam itaque ab vero, voluptatem sed et temporibus. Totam rerum a cum earum aut. Deserunt doloremque perferendis suscipit alias molestias doloribus dignissimos incidunt eligendi explicabo illo ipsa ullam, optio dolorem, assumenda voluptas animi dolor molestiae totam consequuntur aliquam minima obcaecati, officia nam! Eius nesciunt, iste delectus dicta similique consectetur! Magni impedit alias sint minima exercitationem?",
+        "category": "Moisturizer",
+        "productQuantity": 5,
+        "productImage": "/assets/products/13.png",
+        "price": "99"
+    },
+    {
+        "id": 6,
+        "productName": "Amaizax",
+        "productDetail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, ullam ad consequuntur laudantium eum, voluptatibus eaque modi et repudiandae quidem, incidunt eos minus sunt accusamus? Architecto quaerat et obcaecati porro voluptas iusto, fuga, optio vitae odio debitis possimus non maxime, illum ex ullam? Sit, excepturi delectus. Pariatur quia, labore magni sed sequi voluptatem  harum fuga exercitationem, temporibus consequuntur earum? Nisi earum voluptas sequi minima possimus deleniti saepe ipsam itaque ab vero, voluptatem sed et temporibus. Totam rerum a cum earum aut. Deserunt doloremque perferendis suscipit alias molestias doloribus dignissimos incidunt eligendi explicabo illo ipsa ullam, optio dolorem, assumenda voluptas animi dolor molestiae totam consequuntur aliquam minima obcaecati, officia nam! Eius nesciunt, iste delectus dicta similique consectetur! Magni impedit alias sint minima exercitationem?",
+        "category": "Moisturizer",
+        "productQuantity": 5,
+        "productImage": "/assets/products/14.png",
+        "price": "200"
+    }
+]
