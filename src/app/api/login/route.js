@@ -1,10 +1,11 @@
-import "../../../../libs/config/db";
 import { NextResponse } from "next/server";
 import registerModel from "../../../../libs/models/Register";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { connectDB } from "../../../../libs/config/db";
 
 export async function POST(req) {
+    await connectDB
     const { email, password } = await req.json();
     if ([email, password].some((field) => field?.trim() === "")) {
         return NextResponse.json({ "msg": "All fields are required" });

@@ -16,14 +16,10 @@ const RegisterPage = () => {
             method: "POST",
             body: JSON.stringify({ name, email, password })
         })
-        console.log('====================================');
-        console.log(name, email, password);
-        console.log('====================================');
         const result = await res.json()
         if (!result.success) {
             return makeToast(result.msg)
         }
-        console.log(result)
         makeToast(result.msg)
         router.push("/login")
 

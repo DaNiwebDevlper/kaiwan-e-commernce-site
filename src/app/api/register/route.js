@@ -1,9 +1,10 @@
-import "../../../../libs/config/db";
 import { NextResponse } from "next/server";
 import registerModel from "../../../../libs/models/Register";
 import bcrypt from "bcrypt"
+import { connectDB } from "../../../../libs/config/db";
 
 export async function POST(req) {
+    await connectDB()
     const { name, email, password } = await req.json();
 
     if ([name, email, password].some((field) => field?.trim() === "")) {
