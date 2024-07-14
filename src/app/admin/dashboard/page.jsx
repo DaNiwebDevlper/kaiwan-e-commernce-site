@@ -7,7 +7,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'
-const page = () => {
+const Page = () => {
     const router = useRouter()
 
     useEffect(() => {
@@ -66,4 +66,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

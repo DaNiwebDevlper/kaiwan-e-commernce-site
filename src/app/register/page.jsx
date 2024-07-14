@@ -4,7 +4,7 @@ import { makeToast } from '@/utils/Helper'
 import { useRouter } from 'next/navigation'
 
 
-const page = () => {
+const RegisterPage = () => {
     const router = useRouter()
 
     const formHandler = async (e) => {
@@ -36,4 +36,4 @@ const page = () => {
     )
 }
 
-export default page
+export default RegisterPage

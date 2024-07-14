@@ -5,6 +5,6 @@ export const connectDB = async () => {
     if (mongoose.connection.readyState == 1) {
         return mongoose.connection.asPromise()
     }
-    return (await mongoose.connect("mongodb://0.0.0.0/e-commernce"))
+    return (await mongoose.connect(process.env.MONGODB_URI))
 }
 connectDB()
