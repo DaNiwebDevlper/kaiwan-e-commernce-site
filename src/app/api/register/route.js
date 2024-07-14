@@ -5,25 +5,33 @@ import bcrypt from "bcrypt"
 
 export async function POST(req) {
     const { name, email, password } = await req.json();
+
     if ([name, email, password].some((field) => field?.trim() === "")) {
-        return NextResponse.json({ "success": null, "msg": "All fields are require" })
+        return NextResponse.json({ "success": null, "msg": "All fields are required" });
     }
-
+    // to check the password is not less then 8
     if (password?.length < 8) {
-        return NextResponse.json({ "success": null, "msg": "password aleast 8 characters" })
+        return NextResponse.json({ "success": null, "msg": "Password must be at least 8 characters long" });
     }
-    const isUserExist = await registerModel.findOne({ email })
+
+    // to check the email is already exist
+
+    const isUserExist = await registerModel.findOne({ email });
     if (isUserExist) {
-        return NextResponse.json({ "success": null, "msg": "User already exist" })
-    }
-    const generatePasswordHashing = await bcrypt.hash(password, 10)
-    const registerUser = await registerModel.create({
-        name, email, password: generatePasswordHashing
-    })
-    if (!registerUser) {
-        return NextResponse.json({ "success": null, "msg": "error to regoster" })
+        return NextResponse.json({ "success": null, "msg": "User already exists" });
     }
 
-    return NextResponse.json({ "success": true, "msg": "register sucessfully" })
+    /// password hashing 
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await registerModel.create({
+        name, email, password: hashedPassword
+    });
+
+    if (!newUser) {
+        return NextResponse.json({ "success": null, "msg": "Error in registering" });
+    }
+
+    return NextResponse.json({ "success": true, "msg": "Registered successfully" });
 }

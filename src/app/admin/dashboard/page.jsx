@@ -4,9 +4,18 @@ import ProductRow from "@/components/admin-panel/ProductRow";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { setLoading } from "@/redux/slice/loadingSlice";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import Cookies from 'js-cookie'
 const page = () => {
+    const router = useRouter()
+
+    useEffect(() => {
+        const user = Cookies.get('user')
+        if (!user || JSON.parse(user).email !== "343danish@gmail.com") {
+            router.push('/')
+        }
+    }, [router])
     const [products, setProducts] = useState([]);
     const [openPopup, setOpenPopup] = useState(false);
     const [updateTable, setUpdateTable] = useState(false);

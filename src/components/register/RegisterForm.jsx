@@ -1,32 +1,36 @@
+import Link from 'next/link'
 import React from 'react'
 
 const RegisterForm = ({ submitForm }) => {
     return (
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitForm}>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        <form className="sm:w-[350px] w-[300px] dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 " onSubmit={submitForm}>
+            <p className='font-madimi text-2xl font-semibold my-5 text-center'>Registration Form</p>
+            <div className="mb-4">
+                <label className="block text-gray-700 dark:text-gray-500 text-sm font-bold mb-2" >
                     Name
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name='name' type="text" placeholder="name" required />
+                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="name" name='name' type="text" placeholder="name" required />
             </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" >
                     email
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name='email' type="email" placeholder="email" />
+                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="email" name='email' type="email" placeholder="email" />
             </div>
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+            <div className="mb-6">
+                <label className="block text-gray-700 text-sm font-bold mb-2" >
                     Password
                 </label>
-                <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" name='password' type="password" placeholder="******************" />
-                {/* <p class="text-red-500 text-xs italic">Please choose a password.</p> */}
+                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="password" name='password' type="password" placeholder="password..." />
+
             </div>
-            <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Sign In
+            <div className="flex items-center justify-between">
+                <button className="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none w-full text-center text-sm font-madimi focus:shadow-outline" type="submit">
+                    Register
                 </button>
             </div>
+            <div className="h-[1px] w-full bg-slate-400 mt-4"></div>
+            <p className='text-sm my-3'>Already have account <Link href="/login" className='underline text-blue-500 font-semibold'>Login</Link></p>
         </form>
     )
 }

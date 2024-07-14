@@ -1,10 +1,12 @@
 "use client"
 import RegisterForm from '@/components/register/RegisterForm'
 import { makeToast } from '@/utils/Helper'
-import axios from 'axios'
-import React from 'react'
+import { useRouter } from 'next/navigation'
+
 
 const page = () => {
+    const router = useRouter()
+
     const formHandler = async (e) => {
         e.preventDefault()
         const values = e.currentTarget
@@ -20,11 +22,16 @@ const page = () => {
             return makeToast(result.msg)
         }
         makeToast(result.msg)
+        router.push("/login")
+
     }
 
     return (
         <>
-            <RegisterForm submitForm={formHandler} />
+            <div className="grid place-content-center min-h-[88vh]">
+
+                <RegisterForm submitForm={formHandler} />
+            </div>
         </>
     )
 }
