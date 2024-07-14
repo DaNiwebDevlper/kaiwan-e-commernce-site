@@ -7,20 +7,20 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'
-const Page = () => {
-    const router = useRouter()
 
-    useEffect(() => {
-        const user = Cookies.get('user')
-        if (!user || JSON.parse(user).email !== "343danish@gmail.com") {
-            router.push('/')
-        }
-    }, [router])
+const Page = () => {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
     const [products, setProducts] = useState([]);
     const [openPopup, setOpenPopup] = useState(false);
     const [updateTable, setUpdateTable] = useState(false);
 
-    const dispatch = useAppDispatch();
+    useEffect(() => {
+        const user = Cookies.get('user');
+        if (!user || JSON.parse(user).email !== "343danish@gmail.com") {
+            router.push('/');
+        }
+    }, [router]);
 
     useEffect(() => {
         dispatch(setLoading(true));
@@ -28,7 +28,7 @@ const Page = () => {
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));
-    }, [updateTable]);
+    }, [updateTable, dispatch]);
 
     return (
         <div className="p-4">

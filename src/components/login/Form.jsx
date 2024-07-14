@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
 
 const Form = ({ submitForm }) => {
     return (
@@ -17,7 +17,6 @@ const Form = ({ submitForm }) => {
                     Password
                 </label>
                 <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="password" name='password' type="password" placeholder="password..." />
-
             </div>
             <div className="flex items-center justify-between">
                 <button className="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none w-full text-center text-sm font-madimi focus:shadow-outline" type="submit">
@@ -25,9 +24,9 @@ const Form = ({ submitForm }) => {
                 </button>
             </div>
             <div className="h-[1px] w-full bg-slate-400 mt-4"></div>
-            <p className='text-sm my-3'>Don't have account <Link href="/register" className='underline text-blue-500 font-semibold'>Register</Link></p>
+            <p className='text-sm my-3'>Don&apos;t have account <Link href="/register" className='underline text-blue-500 font-semibold'>Register</Link></p>
         </form>
-    )
+    );
 }
 
-export default Form
+export default Form;

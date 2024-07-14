@@ -4,10 +4,10 @@ import productData from "../../../../data/productData.json"
 import Image from "next/image"
 
 const ProductDetail = () => {
+    const params = useParams()
     return (
         <div className='min-h-screen flex flex-col justify-center items-center p-9'>
             {productData.map((product) => {
-                const params = useParams()
                 return (params.id == product.id ?
                     <div className="flex gap-5">
                         <div className="sm:w-[40%]">

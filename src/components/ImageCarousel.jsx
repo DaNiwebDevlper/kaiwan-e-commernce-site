@@ -3,7 +3,6 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 
-
 const ImageCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -12,7 +11,7 @@ const ImageCarousel = ({ images }) => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [images.length]);
 
     const nextImage = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -31,7 +30,6 @@ const ImageCarousel = ({ images }) => {
                         className={`absolute inset-0 transition-transform transform ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
                         style={{ transitionDuration: '1000ms' }}
                     >
-
                         <Image src={image.imgSrc} fill alt={`Slide ${index}`} className="w-full h-full object-cover" />
                     </div>
                 ))}
