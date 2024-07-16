@@ -19,14 +19,13 @@ export async function POST(req) {
 
         const isUserExist = await registerModel.findOne({ email });
         if (!isUserExist) {
-            return NextResponse.json({ msg: "Provide correct credentials" }, { status: 401 });
+            return NextResponse.json({ msg: "Providde credentials are incorrect" }, { status: 401 });
         }
 
         const comparePassword = await bcrypt.compare(password, isUserExist.password);
         if (!comparePassword) {
-            return NextResponse.json({ msg: "Provide correct credentials" }, { status: 401 });
+            return NextResponse.json({ msg: "Providde credentials are incorrect" }, { status: 401 });
         }
-
         const jwtSecret = process.env.JWT_SECRET_KEY;
         const generateToken = jwt.sign({ id: isUserExist._id, email: isUserExist.email }, jwtSecret, { expiresIn: '1h' });
 
