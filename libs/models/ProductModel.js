@@ -20,15 +20,19 @@ const ProductSchema = new Schema({
     productCategory: {
         type: String,
         required: true
-    }, productQuantity: {
-        type: String,
-
-    }, fileKey: {
-        type: String,
-
     },
-})
+    productQuantity: {
+        type: String,
+    },
+    fileKey: {
+        type: String,
+    },
+    featured: {
+        type: Boolean,
+        default: false,
+    },
+});
 
-const ProductModel = mongoose.models.products || mongoose.model('products', ProductSchema)
+const ProductModel = mongoose.models.products || mongoose.model('products', ProductSchema);
 
-export default ProductModel
+export default ProductModel;

@@ -7,3 +7,18 @@ th,td{
      padding: 8px;
       text-align: left;
 }
+
+@layer components {
+      .sidebar-enter {
+        @apply transform translate-x-full;
+      }
+      .sidebar-enter-active {
+        @apply transform translate-x-0 transition-transform duration-300;
+      }
+      .sidebar-exit {
+        @apply transform translate-x-0;
+      }
+      .sidebar-exit-active {
+        @apply transform translate-x-full transition-transform duration-300;
+      }
+    }

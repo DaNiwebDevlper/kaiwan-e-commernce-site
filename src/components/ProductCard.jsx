@@ -5,10 +5,10 @@ import { LuDollarSign } from 'react-icons/lu'
 
 const ProductCard = ({ id, title, imgSrc, price }) => {
     return (
-        <div className={`sm:w-[250px] shrink-0 flex flex-col gap-3 transition-all duration-300 transform border rounded-xl p-3`}>
+        <div className={`sm:w-[250px] w-[80%] shrink-0 flex flex-col gap-3 transition-all duration-300 transform border rounded-xl p-3`}>
             <div className="overflow-hidden">
                 <Link href={`/products/${id}`}>
-                    <Image src={imgSrc} alt='card img' width={300} height={200} className='w-[330px] rounded-lg h-[250px] cursor-pointer hover:scale-150 transition-all duration-200' />
+                    <Image src={`/${imgSrc}`} alt='card img' width={300} height={200} className='w-[330px] rounded-lg h-[250px] cursor-pointer hover:scale-150 transition-all duration-200' />
                 </Link>
             </div>
             <div className="flex justify-between px-1 items-center">

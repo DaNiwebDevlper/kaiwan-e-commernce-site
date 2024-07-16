@@ -6,13 +6,13 @@ export async function PUT(request, { params }) {
     try {
         const body = await request.json();
         const id = params.id;
-        const { name: productName, category: productCategory, price: productPrice } = body;
+        const { name: productName, category: productCategory, price: productPrice, quantity: productQuantity } = body;
 
         await connectDB();
         const data = await ProductModel.findByIdAndUpdate(id, {
             productName,
             productCategory,
-            productPrice
+            productPrice, productQuantity
         }, { new: true });
 
         return NextResponse.json({ msg: "Updated Successfully", data });

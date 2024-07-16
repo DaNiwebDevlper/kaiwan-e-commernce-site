@@ -18,6 +18,8 @@ const ProductRow = ({ srNo, setUpdateTable, setOpenPopup, product }) => {
 
     }
 
+    /// delete products function
+
     const handleDelete = async () => {
         const confirmDelete = confirm("Are you sure you want to delete this product?");
         if (!confirmDelete) return;
@@ -33,7 +35,7 @@ const ProductRow = ({ srNo, setUpdateTable, setOpenPopup, product }) => {
         }
     };
     return (
-        <tr className='text-sm sm:text-lg border-b dark:border-white/10  border-black/10 overflow-y-auto'>
+        <tr className='text-sm sm:text-lg border-b  border-black/10 overflow-y-auto'>
             <td>
                 <div className='pl-5'>{srNo}</div>
             </td>

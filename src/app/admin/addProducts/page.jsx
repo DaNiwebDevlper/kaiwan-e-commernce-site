@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { setLoading } from "@/redux/slice/loadingSlice";
@@ -18,14 +18,15 @@ const AddProduct = () => {
         productPrice: "",
         productQuantity: "",
         productCategory: "Sunblock",
-        productDetail: ""
+        productDetail: "",
+        featured: false
     });
 
     const dispatch = useAppDispatch();
 
     const onChangeHandler = (event) => {
         const name = event.target.name;
-        const value = event.target.value;
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setData(data => ({ ...data, [name]: value }));
     };
 
@@ -42,6 +43,7 @@ const AddProduct = () => {
         formdata.append('category', data.productCategory);
         formdata.append('detail', data.productDetail);
         formdata.append('quantity', data.productQuantity);
+        formdata.append('featured', data.featured ? 'true' : 'false');
         formdata.append('image', showImg);
 
         try {
@@ -55,7 +57,8 @@ const AddProduct = () => {
                     productPrice: "",
                     productQuantity: "",
                     productCategory: "Sunblock",
-                    productDetail: ""
+                    productDetail: "",
+                    featured: false
                 });
             }
         } catch (error) {
@@ -69,12 +72,19 @@ const AddProduct = () => {
     return (
         <form onSubmit={onSubmitHandler} className='p-5'>
             <p className='text-xl font-semibold font-mono'>Upload Thumbnail</p>
-            <label htmlFor='image' className='' >
-                <Image src={!showImg ? "/assets/uploadIcon.png" : URL.createObjectURL(showImg)} className='cursor-pointer p-1 border-dotted border-2 w-[150px] h-[120px] my-4' width={100} height={80} alt='image upload icon' />
+            <label htmlFor='image'>
+                <Image
+                    src={!showImg ? "/assets/uploadIcon.png" : URL.createObjectURL(showImg)}
+                    className='cursor-pointer p-1 border-dotted border-2 w-[150px] h-[120px] my-4'
+                    width={100}
+                    height={80}
+                    alt='image upload icon'
+                    unoptimized
+                />
             </label>
             <input onChange={onImageChange} type='file' required hidden name='image' id='image' className='w-fit' />
 
-            <p className=' text-black/80 dark:text-white/80 pl-2'>Product Name: </p>
+            <p className='text-black/80 dark:text-white/80 pl-2'>Product Name: </p>
             <input type='text' name='productName' onChange={onChangeHandler} value={data.productName} placeholder='Enter the product name...' required className='text-sm sm:w-[60%] w-full border rounded-lg py-2 px-4 my-2' />
 
             <p className='text-black/80 dark:text-white/80 pl-2'>Description: </p>
@@ -83,11 +93,11 @@ const AddProduct = () => {
 
             <div className="flex justify-between w-full sm:w-[60%]">
                 <div className="">
-                    <p className=' text-black/80 dark:text-white/80 pl-2'>Price: </p>
+                    <p className='text-black/80 dark:text-white/80 pl-2'>Price: </p>
                     <input type='number' name='productPrice' onChange={onChangeHandler} value={data.productPrice} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
                 <div className="">
-                    <p className=' text-black/80 dark:text-white/80 pl-2'>Quantity: </p>
+                    <p className='text-black/80 dark:text-white/80 pl-2'>Quantity: </p>
                     <input type='number' name='productQuantity' onChange={onChangeHandler} value={data.productQuantity} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
             </div>
@@ -100,7 +110,11 @@ const AddProduct = () => {
                     ))}
                 </select>
                 <br />
-
+                <label className="flex items-center">
+                    <input type="checkbox" name="featured" checked={data.featured} onChange={onChangeHandler} />
+                    <span className="ml-2">Featured</span>
+                </label>
+                <br />
                 <button type='submit' className='py-2 sm:w-[150px] w-full rounded-lg bg-black dark:bg-teal-500 dark:text-black transition-all text-white active:scale-90'>ADD</button>
             </div>
         </form>

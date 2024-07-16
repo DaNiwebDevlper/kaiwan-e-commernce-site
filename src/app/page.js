@@ -1,12 +1,12 @@
+"use client"
 import { ImageCarousel, CardCarousel } from "@/components";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import { useState } from "react";
+import banner from "../../data/banner.json"
 
-const banner = [
-  { imgSrc: "/assets/landingPage.png", title: "Image1 title " },
-  { imgSrc: "/assets/l1.png", title: "Image222 title " }
-]
 
 export default function Home() {
+  const [showCart, setShowCart] = useState(false)
   return (
     <>
       <ImageCarousel images={banner} />

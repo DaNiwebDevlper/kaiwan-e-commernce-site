@@ -10,12 +10,19 @@ import { TbTruckDelivery } from "react-icons/tb";
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { CgProfile } from "react-icons/cg";
+import CartCounter from "./redux/CartCountre";
+import CartSidebar from "./redux/CartSidebar";
 const Navbar = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
     const [user, setUser] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const router = useRouter();
+    const [isCartOpen, setIsCartOpen] = useState(false)
+
+    /// add to cart button
+
+
 
 
     //// handle user login data
@@ -44,7 +51,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="w-full h-8 bg-red-500 text-white sm:text-lg text-[10px] font-madimi flex justify-center items-center gap-2">
+            <div className="w-full h-8 bg-red-500 text-white sm:text-lg text-[10px] font-mono flex justify-center items-center gap-2">
                 <p>Now Cash on delivery available. All Over Pakistan</p>
                 <TbTruckDelivery className="text-2xl text-yellow-400" />
             </div>
@@ -73,7 +80,7 @@ const Navbar = () => {
                 </ul>
 
                 {/* ///////////////---NavLinks for Mobile---///////////////////// */}
-                <div onClick={() => setNav(!nav)} className="cursor-pointer pr-[150px] z-40 text-gray-500 sm:hidden">
+                <div onClick={() => setNav(!nav)} className="cursor-pointer pr-[130px] z-40 text-gray-500 sm:hidden">
                     {nav ? <FaTimes size={25} className="text-rose-500" /> : <FaBars className="text-rose-500" size={25} />}
                 </div>
 
@@ -100,7 +107,10 @@ const Navbar = () => {
                 {/* ////---Add to cart button and darkMode/LightMode button */}
 
                 <div className="flex gap-4 items-center mr-5">
-                    <MdShoppingCart className="text-2xl cursor-pointer" />
+                    <button>
+                        <CartCounter />
+                    </button>
+                    <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
                     <ThemeSwitcher />
 
                     {/* /// if the user not login then shows these buttons */}

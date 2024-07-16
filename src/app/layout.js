@@ -2,8 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/darkMode/Provider";
 import { Navbar } from "@/components";
-
-import App from "./App";
+import App from "./app";
 import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '500', '600', '700', '400'] });
@@ -18,15 +17,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <Providers>
-
           <App>
             <Navbar />
             {children}
           </App>
-
         </Providers>
 
-        <Toaster position="bottom-center" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );

@@ -23,7 +23,7 @@ const SideBar = () => {
 
                     return (
                         <Link href={options.href} key={options.title}>
-                            <div className={`sm:w-full w-fit rounded-lg  hover:bg-rose-200 items-center p-2 text-2xl sm:text-lg flex gap-2 text-black sm:px-3 sm:py-4 ${options.href == path ? " bg-rose-500 text-white" : "bg-slate-100 dark:bg-[#222] dark:text-white text-black"}`}> {options.icon} <span className='hidden sm:inline-block'
+                            <div className={`sm:w-full w-fit rounded-lg dark:hover:bg-white/20  hover:bg-rose-200 items-center p-2 text-2xl sm:text-lg flex gap-2 text-black sm:px-3 sm:py-4 ${options.href == path ? " bg-rose-500 text-white dark:hover:bg-white/20  hover:bg-rose-500" : "bg-slate-100 dark:bg-[#222] dark:text-white text-black"}`}> {options.icon} <span className='hidden sm:inline-block text-md'
                             >{options.title}</span></div>
                         </Link>
                     )
