@@ -2,7 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/darkMode/Provider";
 import { Navbar } from "@/components";
-import App from "./app";
+import App from "./App";
 import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '500', '600', '700', '400'] });

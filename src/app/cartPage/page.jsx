@@ -1,5 +1,5 @@
 "use client"
-import { removeFromCart, addToCart } from '@/redux/cartSlice';
+import { removeFromCart, addToCart } from '../../redux/slice/CartSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 
 const CartPage = () => {
