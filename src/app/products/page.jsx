@@ -26,7 +26,7 @@ const Products = () => {
     ));
 
     return (
-        <div className='min-h-screen'>
+        <div className='min-h-screen py-9'>
             <div className="flex justify-center items-center mb-9 mt-6 flex-wrap sm:gap-1 gap-y-2">
                 {CategoryOptions.map((option) => (
                     <button

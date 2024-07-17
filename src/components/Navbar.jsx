@@ -12,14 +12,16 @@ import { useRouter } from 'next/navigation';
 import { CgProfile } from "react-icons/cg";
 import CartCounter from "./redux/CartCountre";
 import CartSidebar from "./redux/CartSidebar";
+import { useAppSelector } from "@/redux/hooks/hooks";
 const Navbar = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
     const [user, setUser] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const router = useRouter();
-    const [isCartOpen, setIsCartOpen] = useState(false)
 
+    // const [isCartOpen, setIsCartOpen] = useState(false)
+    const cartItems = useAppSelector(state => state.cart.cart)
     /// add to cart button
 
 
@@ -51,7 +53,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="w-full h-8 bg-red-500 text-white sm:text-lg text-[10px] font-mono flex justify-center items-center gap-2">
+            <div className="w-full h-8 bg-rose-600 text-white sm:text-lg text-[10px] font-mono flex justify-center items-center gap-2">
                 <p>Now Cash on delivery available. All Over Pakistan</p>
                 <TbTruckDelivery className="text-2xl text-yellow-400" />
             </div>
@@ -107,10 +109,15 @@ const Navbar = () => {
                 {/* ////---Add to cart button and darkMode/LightMode button */}
 
                 <div className="flex gap-4 items-center mr-5">
-                    <button>
-                        <CartCounter />
-                    </button>
-                    <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                    <div className="flex">
+                        <Link href="/viewCart">
+                            <button className="text-2xl items-center">
+                                <MdShoppingCart />
+                            </button>
+                        </Link>
+                        <small className={`text-rose-500 pt-1 ${cartItems.length < 1 ? 'hidden' : 'block'}`} >({cartItems.length})</small>
+                    </div>
+                    {/* <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} /> */}
                     <ThemeSwitcher />
 
                     {/* /// if the user not login then shows these buttons */}
@@ -147,7 +154,7 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-            </div>
+            </div >
         </>
     );
 };

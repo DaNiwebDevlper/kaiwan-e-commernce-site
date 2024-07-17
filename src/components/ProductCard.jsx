@@ -1,9 +1,12 @@
-import React from 'react'
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import { LuDollarSign } from 'react-icons/lu'
+import { useAppDispatch } from '@/redux/hooks/hooks'
+import { addToCart } from '@/redux/slice/CartSlice'
 
 const ProductCard = ({ id, title, imgSrc, price }) => {
+    const dispatch = useAppDispatch()
     return (
         <div className={`sm:w-[250px] w-[80%] shrink-0 flex flex-col gap-3 transition-all duration-300 transform border rounded-xl p-3`}>
             <div className="overflow-hidden">
@@ -16,7 +19,7 @@ const ProductCard = ({ id, title, imgSrc, price }) => {
                 <p className='flex items-center'>{price} <span><LuDollarSign className='text-green-500' /></span></p>
             </div>
             <div className="flex justify-between items-center">
-                <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30'>Buy Now</button>
+                <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id, imgSrc, title, price }))}>Add to Cart</button>
             </div>
         </div>
     )

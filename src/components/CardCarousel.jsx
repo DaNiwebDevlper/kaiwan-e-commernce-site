@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import { setLoading } from '@/redux/slice/loadingSlice';
 import axios from 'axios';
+import { addToCart } from '@/redux/slice/CartSlice';
 const CardCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carouselRef = useRef(null);
@@ -79,7 +80,7 @@ const CardCarousel = () => {
                         </div>
 
                         <div className="flex justify-between  items-center">
-                            <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30'>Add to Cart</button>
+                            <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ title: item.productName, imgSrc: item.productImage, price: item.productPrice, id: item._id }))}>Add to Cart</button>
                         </div>
                     </div>
                 ))}

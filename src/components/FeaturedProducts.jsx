@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { CardCarousel, ProductCard } from ".";
+import { CardCarousel } from ".";
 
 const FeaturedProducts = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);

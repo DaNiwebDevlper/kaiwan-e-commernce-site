@@ -91,7 +91,7 @@ const AddProduct = () => {
             <textarea placeholder='Enter the product description...' rows={10} className='border rounded-xl px-5 py-2 md:w-[60%] w-full my-2' name='productDetail' onChange={onChangeHandler} value={data.productDetail}></textarea>
             <br />
 
-            <div className="flex justify-between w-full sm:w-[60%]">
+            <div className="flex justify-between items-center w-full sm:w-[60%]">
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Price: </p>
                     <input type='number' name='productPrice' onChange={onChangeHandler} value={data.productPrice} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
@@ -100,22 +100,24 @@ const AddProduct = () => {
                     <p className='text-black/80 dark:text-white/80 pl-2'>Quantity: </p>
                     <input type='number' name='productQuantity' onChange={onChangeHandler} value={data.productQuantity} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:w-[60%] sm:items-center">
-                <select name='productCategory' onChange={onChangeHandler} value={data.productCategory} className='w-fit h-fit rounded-lg px-4 py-2 border'>
-                    {CategoryOptions.map((options, index) => (
-                        <option value={options} key={index}>
-                            {options}
-                        </option>
-                    ))}
-                </select>
-                <br />
-                <label className="flex items-center">
+                <div className="">
+                    <p className="text-black/80 dark:text-white/80 pl-2 ">Category:</p>
+                    <select name='productCategory' onChange={onChangeHandler} value={data.productCategory} className='w-fit h-fit rounded-lg px-4 text-sm py-2 border my-2'>
+                        {CategoryOptions.map((options, index) => (
+                            <option value={options} key={index}>
+                                {options}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <label className="flex items-center px-4 py-[6px] my-2 dark:bg-black bg-white mt-6 border rounded-lg">
                     <input type="checkbox" name="featured" checked={data.featured} onChange={onChangeHandler} />
                     <span className="ml-2">Featured</span>
                 </label>
-                <br />
-                <button type='submit' className='py-2 sm:w-[150px] w-full rounded-lg bg-black dark:bg-teal-500 dark:text-black transition-all text-white active:scale-90'>ADD</button>
+            </div>
+            <div className="sm:w-[60%]">
+                <button type='submit' className='py-2  rounded-lg bg-black dark:bg-rose-700 dark:hover:bg-red-900 transition-all text-white active:scale-90 w-full my-4'>ADD</button>
             </div>
         </form>
     );

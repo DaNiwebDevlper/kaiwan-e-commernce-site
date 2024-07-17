@@ -4,7 +4,10 @@ import { Providers } from "@/components/darkMode/Provider";
 import { Navbar } from "@/components";
 import App from "./App";
 import { Toaster } from "react-hot-toast";
-
+import Footer from "@/components/Footer";
+import Link from "next/link";
+import { IoLogoWhatsapp } from "react-icons/io";
+import WhatsAppButton from "@/components/WhatsAppButton";
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '500', '600', '700', '400'] });
 
 export const metadata = {
@@ -15,13 +18,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
       <body className={poppins.className}>
-        <Providers>
-          <App>
-            <Navbar />
-            {children}
-          </App>
-        </Providers>
+        <div className="relative">
+          <Providers>
+            <App>
+              <Navbar />
+              {children}
+              <WhatsAppButton />
+              <Footer />
+            </App>
+          </Providers>
+        </div>
 
         <Toaster position="top-center" reverseOrder={false} />
       </body>
