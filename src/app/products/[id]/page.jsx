@@ -17,7 +17,7 @@ const ProductDetail = () => {
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));
-    }, []);
+    }, [dispatch]);
     return (
         <div className='min-h-screen flex flex-col justify-center items-center p-9'>
             {products.map((product) => {

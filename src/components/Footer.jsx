@@ -67,7 +67,8 @@ const Footer = () => {
                                 </li>
 
                                 <li className="mb-2 hover:underline transition-all font-semibold text-white/80">
-                                    Adress:  <Link href="https://www.google.com/maps/place/Kaiwan+Pharma/@31.412771,73.1034335,15z/data=!4m6!3m5!1s0x392269077445bbb9:0x3412483ac999ed74!8m2!3d31.412771!4d73.1034335!16s%2Fg%2F11y5by9nfr?entry=ttu" target="_blank" className="font-normal text-gray-400">Plot 1432, Pilot Ground Block B people's Colony No 1, Faisalabad Punjab, Pakistan</Link>
+                                    Adress:  <Link href="https://www.google.com/maps/place/Kaiwan+Pharma/@31.412771,73.1034335,15z/data=!4m6!3m5!1s0x392269077445bbb9:0x3412483ac999ed74!8m2!3d31.412771!4d73.1034335!16s%2Fg%2F11y5by9nfr?entry=ttu" target="_blank" className="font-normal text-gray-400">Plot 1432, Pilot Ground Block B people&apos;s Colony No 1, Faisalabad Punjab, Pakistan</Link>
+
 
                                 </li>
                             </ul>
