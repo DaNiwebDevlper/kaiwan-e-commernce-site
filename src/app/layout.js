@@ -5,8 +5,6 @@ import { Navbar } from "@/components";
 import App from "./App";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
-import Link from "next/link";
-import { IoLogoWhatsapp } from "react-icons/io";
 import WhatsAppButton from "@/components/WhatsAppButton";
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '500', '600', '700', '400'] });
 
