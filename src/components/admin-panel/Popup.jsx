@@ -47,7 +47,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }) => {
                             required
                             onChange={(e) => setInputData({ ...inputData, name: e.target.value })}
                             value={inputData.name}
-                            className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-full w-full"
+                            className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-lg w-full"
                         />
                     </label>
                     <input
@@ -55,10 +55,10 @@ const Popup = ({ setOpenPopup, setUpdateTable }) => {
                         type="number"
                         onChange={(e) => setInputData({ ...inputData, price: e.target.value })}
                         value={inputData.price}
-                        className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-full w-full"
+                        className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-lg w-full"
                     />
-                    <div className="flex justify-between">
-                        <select name='productCategory' onChange={(e) => setInputData({ ...inputData, category: e.target.value })} value={inputData.category} className='w-fit h-fit rounded-full bg-slate-100 outline-none border-gray-400 px-4 py-2 border'>
+                    <div className="flex justify-between gap-x-4">
+                        <select name='productCategory' onChange={(e) => setInputData({ ...inputData, category: e.target.value })} value={inputData.category} className='w-full h-fit rounded-lg bg-slate-100 outline-none border-gray-400 px-4 py-2 border'>
                             {CategoryOptions.map((options, index) => (
                                 <option value={options} key={index}>
                                     {options}
@@ -69,14 +69,14 @@ const Popup = ({ setOpenPopup, setUpdateTable }) => {
 
                         <input
                             type="number"
-
+                            placeholder="quantity"
                             onChange={(e) => setInputData({ ...inputData, quantity: e.target.value })}
                             value={inputData.quantity}
-                            className="px-4 py-2 border border-gray-400 outline-none bg-slate-100 rounded-full w-[100px]"
+                            className="px-4 py-2 border border-gray-400 outline-none bg-slate-100 rounded-lg w-full"
                         />
                     </div>
                     <div className="flex justify-center">
-                        <button className="text-sm px-6 w-full py-2 rounded-full bg-black text-white dark:border dark:text-white">Update</button>
+                        <button className="text-sm px-6 w-full py-3 rounded-lg bg-black text-white dark:border dark:text-white">Update</button>
                     </div>
                 </form>
             </div>

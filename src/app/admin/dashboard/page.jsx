@@ -1,12 +1,13 @@
 "use client"
 import Popup from "@/components/admin-panel/Popup";
 import ProductRow from "@/components/admin-panel/ProductRow";
-import { useAppDispatch } from "@/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { setLoading } from "@/redux/slice/loadingSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'
+import Loader from "@/components/admin-panel/Loader";
 
 const Page = () => {
     const router = useRouter();
@@ -14,7 +15,6 @@ const Page = () => {
     const [products, setProducts] = useState([]);
     const [openPopup, setOpenPopup] = useState(false);
     const [updateTable, setUpdateTable] = useState(false);
-
     useEffect(() => {
         const user = Cookies.get('user');
         if (!user || JSON.parse(user).email !== "343danish@gmail.com") {
@@ -32,6 +32,7 @@ const Page = () => {
 
     return (
         <div className="p-4">
+
             <div className="dark:bg-black bg-white rounded-xl min-h-screen">
                 <h1 className="text-3xl font-semibold font-madimi p-5">All Products</h1>
                 <div className="w-full overflow-y-auto">

@@ -7,7 +7,7 @@ import { productSlice } from './slice/productSlice'
 export const store = configureStore({
     reducer: {
         cart: CartSlice,
-        loadingSlice,
+        loading: loadingSlice.reducer,
         product: productSlice.reducer,
     }
 })

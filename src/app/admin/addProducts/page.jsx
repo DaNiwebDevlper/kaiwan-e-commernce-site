@@ -7,6 +7,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 
+
 export const CategoryOptions = [
     'Whitening', 'Hair Care', 'Sunblock', 'Acne', 'Moisturizer', 'All'
 ];
@@ -71,6 +72,7 @@ const AddProduct = () => {
 
     return (
         <form onSubmit={onSubmitHandler} className='p-5'>
+
             <p className='text-xl font-semibold font-mono'>Upload Thumbnail</p>
             <label htmlFor='image'>
                 <Image

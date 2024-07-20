@@ -9,10 +9,9 @@ import { MdShoppingCart } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { CgProfile } from "react-icons/cg";
-import CartCounter from "./redux/CartCountre";
-import CartSidebar from "./redux/CartSidebar";
+import { FcBusinessman } from "react-icons/fc";
 import { useAppSelector } from "@/redux/hooks/hooks";
+import { SlHandbag } from "react-icons/sl";
 const Navbar = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
@@ -20,7 +19,6 @@ const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const router = useRouter();
 
-    // const [isCartOpen, setIsCartOpen] = useState(false)
     const cartItems = useAppSelector(state => state.cart.cart)
     /// add to cart button
 
@@ -32,6 +30,7 @@ const Navbar = () => {
         const userCookie = Cookies.get('user');
         if (userCookie) {
             setUser(JSON.parse(userCookie));
+
         }
     }, []);
 
@@ -112,28 +111,28 @@ const Navbar = () => {
                     <div className="flex">
                         <Link href="/viewCart">
                             <button className="text-2xl items-center">
-                                <MdShoppingCart />
+
+                                <SlHandbag />
                             </button>
                         </Link>
                         <small className={`text-rose-500 pt-1 ${cartItems.length < 1 ? 'hidden' : 'block'}`} >({cartItems.length})</small>
                     </div>
-                    {/* <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} /> */}
                     <ThemeSwitcher />
 
                     {/* /// if the user not login then shows these buttons */}
                     {!user ? (
-                        <>
-                            <Link href="/register">
-                                <button className="text-md font-semibold font-madimi px-4 py-2 border rounded-lg text-white bg-rose-500 active:scale-90  hover:bg-rose-700 cursor-pointer hidden sm:block">Register</button>
-                            </Link>
+                        <div className="flex items-center ">
                             <Link href="/login">
-                                <button className="sm:text-md text-sm font-semibold font-madimi px-6 py-2 border rounded-lg active:scale-90  border-rose-500 cursor-pointer">Login</button>
+                                <button className="text-md font-semibold font-madimi px-3 py-1   border-r border-black/40 dark:border-white/50  active:scale-90  cursor-pointer ">Login</button>
                             </Link>
-                        </>
+                            <Link href="/register">
+                                <button className="text-md  font-semibold font-madimi px-3 py-1  active:scale-90   cursor-pointer">Sign up</button>
+                            </Link>
+                        </div>
                     ) : (
                         ////////---if the user login then show this profile icon and drop down menu to logout and see userName and Email
                         <div className="relative">
-                            <CgProfile
+                            <FcBusinessman
                                 className="w-fit h-10 rounded-full cursor-pointer"
                                 onClick={() => setShowDropdown(!showDropdown)} />
                             {showDropdown && (

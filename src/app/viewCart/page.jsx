@@ -40,7 +40,7 @@ const ViewCartPage = () => {
                     </thead>
                     <tbody>
                         {cartItems.map((items, index) => (
-                            <tr className='text-sm sm:text-lg border-b  border-black/10 overflow-y-auto  px-5 w-full' key={index}>
+                            <tr className='text-sm sm:text-lg border-b  border-black/10 overflow-y-auto w-full h-[60px] px-5' key={index}>
 
                                 <td>
                                     <div>{items.title}</div>

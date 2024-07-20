@@ -4,13 +4,14 @@ import ProductCard from '@/components/ProductCard';
 import Image from 'next/image';
 import { CategoryOptions } from '../admin/addProducts/page';
 import axios from 'axios';
-import { useAppDispatch } from '@/redux/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { setLoading } from '@/redux/slice/loadingSlice';
+import Loader from '@/components/admin-panel/Loader';
 
 const Products = () => {
     const [category, setCategory] = useState("All");
     const [products, setProducts] = useState([]);
-
+    const isLoading = useAppSelector(store => store.loading)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -27,6 +28,11 @@ const Products = () => {
 
     return (
         <div className='min-h-screen py-9'>
+            {isLoading && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
+                    <Loader />
+                </div>
+            )}
             <div className="flex justify-center items-center mb-9 mt-6 flex-wrap sm:gap-1 gap-y-2">
                 {CategoryOptions.map((option) => (
                     <button
@@ -42,7 +48,7 @@ const Products = () => {
             <div className="flex flex-wrap shrink justify-center items-center gap-5">
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((data) => (
-                        <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} />
+                        <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} />
                     ))
                 ) : (<Image src="/assets/empty.svg" alt='no result' width={500} height={400} />
                 )}

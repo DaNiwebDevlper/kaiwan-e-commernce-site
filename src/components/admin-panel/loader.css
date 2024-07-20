@@ -5,7 +5,7 @@
   --text-color: #414856;
   width: 64px;
   height: 64px;
-  border-radius: 50px;
+  border-radius: 50%;
   position: relative;
   display: flex;
   justify-content: center;

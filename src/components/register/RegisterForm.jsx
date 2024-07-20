@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import React from 'react'
+
 
 const RegisterForm = ({ submitForm }) => {
     return (
-        <form className="sm:w-[350px] w-[300px] dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 " onSubmit={submitForm}>
+        <form className="sm:w-[350px] w-[300px] border my-5 dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 " onSubmit={submitForm}>
             <p className='font-madimi text-2xl font-semibold my-5 text-center'>Registration Form</p>
             <div className="mb-4">
                 <label className="block text-gray-700 dark:text-gray-500 text-sm font-bold mb-2" >

@@ -38,7 +38,7 @@ const Footer = () => {
                     </address>
                     <p className="text-rose-500 ">Email: <Link href="mailto:kaiwanpharma@gmail.com" className="text-gray-400" target="_blank">kaiwanpharma@gmail.com</Link></p>
 
-                    <p className="flex gap-1 items-center"><MdPhone className="text-xl text-rose-700" />: <Link href="tel:+923704381300" className="text-sm">+923704381300</Link></p>
+                    <p className="flex gap-1 items-center"><MdPhone className="text-xl text-rose-700" />: <Link href="tel:+923704381300" className="text-md">+923704381300</Link></p>
 
                 </div>
 

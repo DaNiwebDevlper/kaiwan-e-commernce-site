@@ -4,16 +4,17 @@ import { useEffect, useRef, useState } from 'react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { LuDollarSign } from "react-icons/lu";
 import Link from 'next/link';
-import { useAppDispatch } from '@/redux/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { setLoading } from '@/redux/slice/loadingSlice';
 import axios from 'axios';
 import { addToCart } from '@/redux/slice/CartSlice';
+import Loader from './admin-panel/Loader';
 const CardCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carouselRef = useRef(null);
     const [products, setProducts] = useState([]);
     const dispatch = useAppDispatch();
-
+    const loading = useAppSelector(store => store.loading)
 
     useEffect(() => {
         dispatch(setLoading(true));
@@ -61,10 +62,15 @@ const CardCarousel = () => {
                 ref={carouselRef}
 
             >
+                {loading && (
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
+                        <Loader />
+                    </div>
+                )}
                 {products.map((item, index) => (
                     <div
                         key={item._id}
-                        className={`sm:w-[250px] shrink-0 flex flex-col gap-3 transition-all  duration-300 transform border rounded-xl p-3 ${index === currentIndex ? 'translate-x-0' : 'translate-x-1'
+                        className={`sm:w-[250px] w-[300px] shrink-0 sm:mx-0 mx-3 flex flex-col gap-3 transition-all  duration-300 transform border rounded-xl p-3 ${index === currentIndex ? 'translate-x-0' : 'translate-x-1'
                             }`}
                         style={{ transform: `translateX(${-currentIndex * 100}%)` }}
                     >
@@ -76,11 +82,14 @@ const CardCarousel = () => {
                         <div className="flex justify-between px-1 items-center">
 
                             <h1 className='text-md font-semibold font-sarif'>{item.productName}</h1>
-                            <p className='flex items-center'>{item.productPrice} <span><LuDollarSign className='text-green-500' /></span></p>
+                            <p className='flex items-center'>{item.productQuantity == 0 ? <p className='text-rose-500'>Sold out</p> : item.productPrice}<span>{item.productQuantity == 0 ? '' : <LuDollarSign className='text-green-500' />}</span></p>
                         </div>
 
                         <div className="flex justify-between  items-center">
-                            <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ title: item.productName, imgSrc: item.productImage, price: item.productPrice, id: item._id }))}>Add to Cart</button>
+                            {item.productQuantity == 0 ? <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white cursor-not-allowed border dark:bg-transparent border-white/30' disabled>Sold out</button> :
+                                <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => { dispatch(addToCart({ title: item.productName, imgSrc: item.productImage, price: item.productPrice, id: item._id, quantity: item.productQuantity })) }}>Add to Cart</button>
+
+                            }
                         </div>
                     </div>
                 ))}

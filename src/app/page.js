@@ -1,5 +1,5 @@
 "use client"
-import { ImageCarousel, CardCarousel } from "@/components";
+import { ImageCarousel, CardCarousel, FeatureLine } from "@/components";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import { useState } from "react";
 import banner from "../../data/banner.json"
@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <>
       <ImageCarousel images={banner} />
+      <FeatureLine />
       <FeaturedProducts />
 
     </>
