@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { BsFacebook } from 'react-icons/bs'
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa'
+import { FaSquareFacebook } from 'react-icons/fa6'
 import { MdPhone } from 'react-icons/md'
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
                     <div className="flex gap-4 items-center">
 
                         <Link href="https://www.facebook.com/kaiwanpharma?mibextid=ZbWKwL" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">
-                            <FaFacebookF className="text-[20px] hover:text-blue-500" />
+                            <FaSquareFacebook className="text-[25px] text-blue-500" />
                         </Link>
 
                         <Link href="https://www.tiktok.com/@kaiwanpharmaL" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">
@@ -23,7 +24,7 @@ const Footer = () => {
                         </Link>
 
                         <Link href="https://www.instagram.com/kaiwan_pharma?igsh=Z2VpZWFveXM0ajhx" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">
-                            <FaInstagram className="text-[24px] hover:text-rose-500" />
+                            <FaInstagram className="text-[25px] text-rose-500" />
                         </Link>
 
                     </div>

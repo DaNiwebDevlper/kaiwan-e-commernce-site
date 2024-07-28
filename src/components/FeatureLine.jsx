@@ -14,7 +14,7 @@ const FeatureLine = () => {
             <div className="flex  gap-2 sm:text-xl text-sm  sm:px-5 px-2 items-center border-black">
                 <RiVerifiedBadgeFill className="sm:text-3xl text-xl text-green-500" /> <p>Best Price </p>
             </div>
-            <div className="flex gap-2 sm:text-xl text-sm sm:px-5 px-2 items-center border-black">
+            <div className=" hidden sm:flex gap-2 sm:text-xl text-sm sm:px-5 px-2 items-center border-black">
                 <TbTruckDelivery className="sm:text-4xl text-2xl text-yellow-500" /> <p>Delivery all our Pakistan</p>
             </div>
 

@@ -4,7 +4,7 @@ import React from 'react'
 const About = () => {
     return (
         <div className='min-h-screen p-5'>
-            <Image src="/assets/banner.jpg" width={500} height={300} alt='banner' className='w-full rounded-2xl shadow-lg' />
+            <Image src="/assets/about.png" width={500} height={300} alt='banner' className='w-full rounded-2xl shadow-lg' />
             <div className="my-5 flex justify-center items-center flex-col gap-y-9">
                 <div className="my-5 flex justify-center items-center flex-col">
                     <h1 className='sm:text-4xl text-3xl font-madimi heading font-semibold text-center my-7'>About our brand</h1>

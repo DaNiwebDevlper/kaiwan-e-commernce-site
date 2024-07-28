@@ -36,23 +36,23 @@ const ProductRow = ({ srNo, setUpdateTable, setOpenPopup, product }) => {
     };
     return (
         <tr className='text-sm sm:text-lg border-b  border-black/10 overflow-y-auto'>
-            <td>
-                <div className='pl-5'>{srNo}</div>
+            <td className='hidden sm:block pt-3'>
+                <p className='pl-5'>{srNo}</p>
+            </td>
+            <td >
+                <p>{product.productName}</p>
             </td>
             <td>
-                <div>{product.productName}</div>
-            </td>
-            <td>
-                <div>$ {product.productPrice}</div>
+                <p>RS {product.productPrice}</p>
             </td>
             <td className='py-2'>
                 <Image src={`/${product.productImage}`} alt='product_img' width={50} height={50} className='w-[40px]' />
             </td>
             <td>
-                <div className='flex items-center text-xl sm:gap-2 gap-1 '>
+                <p className='flex items-center text-xl sm:gap-2 gap-1 '>
                     <MdDelete className=' hover:text-rose-500 cursor-pointeractive:scale-90 transition-all cursor-pointer active:scale-90' onClick={handleDelete} />
                     <FaEdit className='l hover:text-green-500 cursor-pointer active:scale-90 transition-all' onClick={onEdit} />
-                </div>
+                </p>
             </td>
         </tr>
     )

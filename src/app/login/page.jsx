@@ -27,7 +27,7 @@ const Login = () => {
             Cookies.set('token', result.token, { expires: 14 }) // Save token for 2 weeks
             Cookies.set('user', JSON.stringify(result.user), { expires: 14 }) // Save user info
             makeToast(result.msg)
-            if (result.user.email === "343danish@gmail.com") {
+            if (result.user.email === "kaiwanpharma@gmail.com") {
                 router.push('/admin/dashboard')
             } else {
                 router.push('/')

@@ -16,7 +16,7 @@ const menu = [
 const SideBar = () => {
     const path = usePathname()
     return (
-        <div className='sm:w-[300px] w-[100px] min-h-screen bg-white dark:bg-black'>
+        <div className='sm:w-[300px] w-[80px] pr-3 min-h-screen bg-white dark:bg-black'>
 
             <div className="flex flex-col pl-5 sm:p-5 gap-y-5 w-full mt-5">
                 {menu.map((options) => {

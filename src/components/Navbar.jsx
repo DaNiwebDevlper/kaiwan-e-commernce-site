@@ -5,13 +5,12 @@ import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeSwitcher from "./darkMode/ThemeSwitcher";
 import Image from "next/image";
-import { MdShoppingCart } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { FcBusinessman } from "react-icons/fc";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { SlHandbag } from "react-icons/sl";
+import { IoPersonCircleSharp } from "react-icons/io5";
 const Navbar = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
@@ -40,7 +39,7 @@ const Navbar = () => {
         Cookies.remove('token');
         Cookies.remove('user');
         setUser(null);
-        router.push('/');
+        router.push('/login');
     };
 
     const links = [
@@ -59,9 +58,9 @@ const Navbar = () => {
             <div className="w-full backdrop-blur-sm sticky z-20 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
 
                 {/* ////--Logo image */}
-                <div className="">
+                <Link href="/">
                     <Image src="/assets/products/logo.png" alt="logo" height={50} width={50} className="hidden sm:block w-[60px] text-white py-0 my-0" />
-                </div>
+                </Link>
 
                 {/* /////////////////---NavLinks for desktop---////////////////// */}
                 <ul className="hidden sm:flex dark:text-white">
@@ -132,7 +131,7 @@ const Navbar = () => {
                     ) : (
                         ////////---if the user login then show this profile icon and drop down menu to logout and see userName and Email
                         <div className="relative">
-                            <FcBusinessman
+                            <IoPersonCircleSharp
                                 className="w-fit h-10 rounded-full cursor-pointer"
                                 onClick={() => setShowDropdown(!showDropdown)} />
                             {showDropdown && (
@@ -140,6 +139,8 @@ const Navbar = () => {
                                     <div className="p-5">
                                         <p className="text-sm font-medium text-gray-400  dark:text-slate-400 flex gap-2 items-center">Name: <span className="dark:text-white/80 text-black/80 font-normal">{user.name}</span></p>
                                         <p className="text-sm font-medium text-gray-400  dark:text-slate-400 flex gap-2 items-center">Email: <span className="dark:text-white/80 text-black/80 font-normal">{user.email}</span></p>
+
+                                        {user.email == "kaiwanpharma@gmail.com" ? <Link onClick={() => setShowDropdown(!showDropdown)} href="/admin/dashboard" className="text-sm py-1 mt-2 text-center">Admin Page</Link> : null}
                                     </div>
                                     <div className="border-t border-gray-200 dark:border-gray-700"></div>
                                     <button

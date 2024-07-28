@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { FaOpencart } from "react-icons/fa";
 import { addToCart } from "@/redux/slice/CartSlice"
 import Loader from "@/components/admin-panel/Loader"
+import Link from "next/link"
 const ProductDetail = () => {
     const params = useParams()
     const dispatch = useAppDispatch()
@@ -37,18 +38,29 @@ const ProductDetail = () => {
                         <div className="sm:w-[60%] flex flex-col gap-y-5 justify-center">
                             <div className="flex items-center justify-between">
                                 <h1 className="text-2xl font-semibold font-madimi">{product.productName}</h1>
-                                <p className="text-xl"><span className="font-semibold text-green-500">$ </span>{product.productPrice}</p>
+                                <p className="text-xl"><span className="font-semibold text-green-500">Rs </span>{product.productPrice}</p>
                             </div>
                             <p className="text-sm text-black/60 dark:text-gray-300  text-justify">{product.productDetail}</p>
-                            <div className="flex flex-col gap-y-5 sm:flex-row justify-between">
-                                <p className="flex gap-x-2 items-center"><span className="text-lg font-semibold font-mono">Availablity: </span>{product.productQuantity == 0 ? <p className="text-rose-600">Sold out</p> : <p className="text-green-500">Product is Available</p>}</p>
-                                <button className="px-4 py-2 rounded-lg bg-black text-white active:scale-90 border dark:bg-rose-700 transition-all flex gap-1 justify-center items-center text-sm"
-                                    onClick={() => dispatch(addToCart({ id: product._id, imgSrc: product.productImage, title: product.productName, price: product.productPrice, quantity: product.productQuantity }))}> Add to Cart <FaOpencart className="text-xl text-rose-300 mx-1 " /> </button>
+                            <div className="flex flex-col w-full gap-y-5 sm:flex-row sm:justify-between ">
+                                <div className="">
+                                    <p className="flex gap-x-2 items-center"><span className="text-lg font-semibold text-md font-mono">Availablity: </span>{product.productQuantity == 0 ? <span className="text-rose-600">Sold out</span> : <span className="text-green-500 text-sm">Product is Available</span>}</p>
+                                </div>
+                                <div className="">
+                                    {product.productQuantity == 0 ? <button className='px-4 py-2 rounded-lg bg-black text-white active:scale-90 border dark:bg-rose-700 transition-all flex gap-1 justify-center items-center text-sm cursor-not-allowed' disabled >Sold out</button> :
+                                        <Link href="/viewCart" className='w-full'>
+                                            <button className="px-4 py-2 rounded-lg bg-black text-white active:scale-90 border dark:bg-rose-700 transition-all flex gap-1 justify-center items-center text-sm"
+                                                onClick={() => dispatch(addToCart({ id: product._id, imgSrc: product.productImage, title: product.productName, price: product.productPrice, quantity: product.productQuantity }))}> Add to Cart <FaOpencart className="text-xl text-rose-300 mx-1 " /> </button>
+                                        </Link>
+                                    }
+                                </div>
+
+
+
                             </div>
 
                         </div>
 
-                    </div> : ""
+                    </div> : null
                 )
             })}
 

@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { AiOutlineSend } from "react-icons/ai";
-import { BiMailSend } from "react-icons/bi"
-import { ImLocation } from "react-icons/im"
+import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaSquareFacebook } from "react-icons/fa6";
+import { ImLocation } from "react-icons/im";
+import { MdMarkEmailRead, MdPhone } from "react-icons/md";
 const Contact = () => {
 
     // var imageStyle = {
@@ -17,7 +20,7 @@ const Contact = () => {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <Image src="/assets/banner.jpg" width={500} height={300} alt="banner" className="w-[90%] shadow-lg mt-5 rounded-2xl h-full mb-9" />
+            <Image src="/assets/contact.png" width={500} height={300} alt="banner" className="w-[90%] shadow-lg mt-5 rounded-2xl h-full mb-9" />
             <section className="flex flex-col-reverse sm:flex-row gap-5 justify-center items-center min-h-screen p-5" >
 
                 {/* //////// --- Google Map --- //////// */}
@@ -90,10 +93,37 @@ const Contact = () => {
                     </form>
 
                 </div>
-
-
-
             </section>
+            <div className="flex flex-col gap-y-5 sm:w-[55%] my-9">
+                <div className="flex flex-col gap-y-3">
+                    <address className="flex gap-1 items-center">
+                        <span className='text-rose-500 text-2xl'><ImLocation /> </span>
+                        <Link href="https://www.google.com/maps/place/Kaiwan+Pharma/@31.412771,73.1034335,15z/data=!4m6!3m5!1s0x392269077445bbb9:0x3412483ac999ed74!8m2!3d31.412771!4d73.1034335!16s%2Fg%2F11y5by9nfr?entry=ttu" target="_blank" className="font-normal text-md dark:text-gray-400 text-slate-700">Plot 1432, Pilot Ground Block B people&apos;s Colony No 1, Faisalabad Punjab, Pakistan</Link>
+                    </address>
+
+
+                    <p className="text-rose-500 flex gap-1 pl-1 items-center"><MdMarkEmailRead className="text-xl" />  <Link href="mailto:kaiwanpharma@gmail.com" className="text-gray-700 dark:text-gray-400" target="_blank">kaiwanpharma@gmail.com</Link></p>
+
+                    <p className="flex gap-1 items-center pr-9 text-gray-700 dark:text-gray-400"><MdPhone className="text-xl text-rose-700" /> <Link href="tel:+923704381300" className="text-md">+923704381300</Link></p>
+
+                </div>
+
+                <div className="flex gap-4 items-center justify-center">
+
+                    <Link href="https://www.facebook.com/kaiwanpharma?mibextid=ZbWKwL" className="w-[40px] border border-black/70 dark:border-white h-[40px] flex justify-center items-center duration-300 cursor-pointer" target="_blank">
+                        <FaSquareFacebook className="text-[25px] text-blue-500" />
+                    </Link>
+
+                    <Link href="https://www.tiktok.com/@kaiwanpharmaL" className="w-[40px] border h-[40px] flex justify-center border-black/70 dark:border-white items-center  duration-300 cursor-pointer" target="_blank">
+                        <FaTiktok className="text-[20px] hover:text-purple-800" />
+                    </Link>
+
+                    <Link href="https://www.instagram.com/kaiwan_pharma?igsh=Z2VpZWFveXM0ajhx" className="w-[40px] border border-black/70 dark:border-white h-[40px] flex justify-center items-center  duration-300 cursor-pointer" target="_blank">
+                        <FaInstagram className="text-[25px] text-rose-500" />
+                    </Link>
+
+                </div>
+            </div>
         </div>
     )
 }

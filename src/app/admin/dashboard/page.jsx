@@ -17,7 +17,7 @@ const Page = () => {
     const [updateTable, setUpdateTable] = useState(false);
     useEffect(() => {
         const user = Cookies.get('user');
-        if (!user || JSON.parse(user).email !== "343danish@gmail.com") {
+        if (!user || JSON.parse(user).email !== "kaiwanpharma@gmail.com" && JSON.parse(user).password !== "kaiwan134") {
             router.push('/');
         }
     }, [router]);
@@ -31,15 +31,14 @@ const Page = () => {
     }, [updateTable, dispatch]);
 
     return (
-        <div className="p-4">
-
+        <div className="sm:p-4 p-1">
             <div className="dark:bg-black bg-white rounded-xl min-h-screen">
-                <h1 className="text-3xl font-semibold font-madimi p-5">All Products</h1>
+                <h1 className="sm:text-3xl text-2xl font-semibold font-madimi p-5">All Products</h1>
                 <div className="w-full overflow-y-auto">
                     <table className="w-full overflow-y-auto">
                         <thead>
-                            <tr className="font-thin py-3 text-black/60 dark:text-white/70 border-b pb-3">
-                                <th>Sr.no</th>
+                            <tr className="font-thin py-3 text-black/60 dark:text-white/70 border-b text-left p-2">
+                                <th className="hidden sm:block">Sr.no</th>
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Picture</th>

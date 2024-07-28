@@ -48,7 +48,7 @@ const Products = () => {
             <div className="flex flex-wrap shrink justify-center items-center gap-5">
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((data) => (
-                        <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} />
+                        <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} width='w-[80%]' />
                     ))
                 ) : (<Image src="/assets/empty.svg" alt='no result' width={500} height={400} />
                 )}

@@ -90,10 +90,10 @@ const AddProduct = () => {
             <input type='text' name='productName' onChange={onChangeHandler} value={data.productName} placeholder='Enter the product name...' required className='text-sm sm:w-[60%] w-full border rounded-lg py-2 px-4 my-2' />
 
             <p className='text-black/80 dark:text-white/80 pl-2'>Description: </p>
-            <textarea placeholder='Enter the product description...' rows={10} className='border rounded-xl px-5 py-2 md:w-[60%] w-full my-2' name='productDetail' onChange={onChangeHandler} value={data.productDetail}></textarea>
+            <textarea placeholder='Product description...' rows={10} className='border rounded-xl px-5 py-2 md:w-[60%] w-full my-2' name='productDetail' onChange={onChangeHandler} value={data.productDetail}></textarea>
             <br />
 
-            <div className="flex justify-between items-center w-full sm:w-[60%]">
+            <div className="flex justify-between flex-wrap items-center w-full sm:w-[60%]">
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Price: </p>
                     <input type='number' name='productPrice' onChange={onChangeHandler} value={data.productPrice} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />

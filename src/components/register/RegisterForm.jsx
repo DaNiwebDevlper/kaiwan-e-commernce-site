@@ -9,19 +9,19 @@ const RegisterForm = ({ submitForm }) => {
                 <label className="block text-gray-700 dark:text-gray-500 text-sm font-bold mb-2" >
                     Name
                 </label>
-                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="name" name='name' type="text" placeholder="name" required />
+                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 dark:text-slate-300 leading-tight text-sm focus:outline outline-white/60" id="name" name='name' type="text" placeholder="name" required />
             </div>
             <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2" >
                     email
                 </label>
-                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="email" name='email' type="email" placeholder="email" />
+                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 dark:text-slate-300 leading-tight text-sm focus:outline outline-white/60" id="email" name='email' type="email" placeholder="email" />
             </div>
             <div className="mb-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2" >
                     Password
                 </label>
-                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-sm focus:outline outline-white/60" id="password" name='password' type="password" placeholder="password..." />
+                <input className="appearance-none border dark:border-white/20 rounded-lg w-full py-2 px-3 text-gray-700 dark:text-slate-300 leading-tight text-sm focus:outline outline-white/60" id="password" name='password' type="password" placeholder="password..." />
 
             </div>
             <div className="flex items-center justify-between">
