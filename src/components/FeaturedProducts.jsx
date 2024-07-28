@@ -26,8 +26,8 @@ const FeaturedProducts = () => {
             <h1 className="sm:text-4xl text-3xl font-bold font-mono my-5 mb-10  text-center">Featured Products</h1>
             {loading && <Loader />}
             <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
-                {products.map((data) => (
-                    <div className="sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3">
+                {products.map((data, i) => (
+                    <div className="sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3" key={i} >
                         <div className="overflow-hidden">
                             <Link href={`/products/${data._id}`}>
                                 <Image src={`/${data.productImage}`} alt='card img' width={300} height={200} className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' />
