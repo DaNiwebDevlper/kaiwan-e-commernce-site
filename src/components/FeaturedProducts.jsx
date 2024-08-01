@@ -22,10 +22,10 @@ const FeaturedProducts = () => {
             .finally(() => dispatch(setLoading(false)));
     }, [dispatch]);
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center">
+        <div className="min-h-screen my-9 flex flex-col items-center justify-center">
             <h1 className="sm:text-4xl text-3xl font-bold font-mono my-5 mb-10  text-center">Featured Products</h1>
             {loading && <Loader />}
-            <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
                 {products.map((data, i) => (
                     <div className="sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3" key={i} >
                         <div className="overflow-hidden">
@@ -35,14 +35,14 @@ const FeaturedProducts = () => {
                         </div>
                         <div className="flex justify-between px-1 items-center">
                             <h1 className='sm:text-[14px] text-[10px] font-semibold font-sarif'>{data.productName}</h1>
-                            <p className='flex items-center text-[10px] sm:text-lg'> <span>{data.productQuantity == 0 ? '' : <p className='text-emerald-500'>Rs: </p>}</span> {data.productQuantity == 0 ? <p className='text-rose-500'>Sold out</p> : data.productPrice}</p>
+                            <p className='flex items-center text-[10px] sm:text-lg'> <span>{data.productQuantity == 0 ? '' : <span className='text-sm'>Rs : </span>}</span> {data.productQuantity == 0 ? <span className='text-rose-500'>Sold out</span> : data.productPrice}</p>
                         </div>
 
                         <div className="flex justify-between items-center">
                             {data.productQuantity == 0 ? <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white cursor-not-allowed border dark:bg-transparent border-white/30' disabled>Sold out</button> :
-                                <Link href="/viewCart" className='w-full'>
-                                    <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id: data._id, imgSrc: data.productImage, title: data.productName, price: data.productPrice, quantity: data.productQuantity }))}>Add to Cart</button>
-                                </Link>
+
+                                <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id: data._id, imgSrc: data.productImage, title: data.productName, price: data.productPrice, quantity: data.productQuantity }))}>Add to Cart</button>
+
                             }
                         </div>
                     </div>

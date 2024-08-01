@@ -22,29 +22,29 @@ const ImageCarousel = ({ images }) => {
     };
 
     return (
-        <div className="relative w-full overflow-hidden">
-            <div className="overflow-hidden relative sm:h-[90vh] w-full h-[250px] p-5 ">
+        <div className="relative w-full flex justify-center items-center overflow-hidden">
+            <div className="overflow-hidden relative sm:w-[93%] sm:h-[85vh] w-full h-[250px] p-5">
                 {images.map((image, index) => (
                     <div
                         key={index}
                         className={`absolute inset-0 transition-transform transform ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
                         style={{ transitionDuration: '1000ms' }}
                     >
-                        <Image src={image.imgSrc} fill alt={`Slide ${index}`} className="w-full h-full object-cover" />
+                        <Image src={image.imgSrc} loading='lazy' fill alt={`Slide ${index}`} className="w-full h-full object-cover" />
                     </div>
                 ))}
             </div>
             <button
                 onClick={prevImage}
-                className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 bg-opacity-50 hover:bg-opacity-100 transition-opacity rounded-full"
+                className="absolute top-1/2 left-1"
             >
-                <GrPrevious />
+                <GrPrevious size={40} className='opacity-50  hover:opacity-100 transition-all' />
             </button>
             <button
                 onClick={nextImage}
-                className="absolute top-1/2 rounded-full right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 bg-opacity-50 hover:bg-opacity-100 transition-opacity"
+                className="absolute top-1/2 right-1  "
             >
-                <GrNext />
+                <GrNext size={40} className='opacity-50  hover:opacity-100 transition-all' />
             </button>
         </div>
     );

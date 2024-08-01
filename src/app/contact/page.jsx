@@ -24,7 +24,8 @@ const Contact = () => {
             <section className="flex flex-col-reverse sm:flex-row gap-5 justify-center items-center min-h-screen p-5" >
 
                 {/* //////// --- Google Map --- //////// */}
-                <div className="sm:w-[40%] w-full min-h-[500px] bg-slate-700">Google map</div>
+                <div className="sm:w-[40%] w-[90%] min-h-[500px] bg-slate-700 overflow-hidden rounded-xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.049017051536!2d73.10085857397614!3d31.412775552452896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392269077445bbb9%3A0x3412483ac999ed74!2sKaiwan%20Pharma!5e0!3m2!1sen!2s!4v1722489741431!5m2!1sen!2s" className="w-[400px] sm:w-[500px] h-[600px]" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 
                 <div className="flex flex-col gap-y-7 w-full sm:w-[55%]  px-7">
                     <h1 className="sm:text-3xl font-madimi font-bold text-2xl title-font">

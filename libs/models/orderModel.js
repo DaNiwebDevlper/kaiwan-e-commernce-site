@@ -24,10 +24,15 @@ const orderSchema = new Schema({
         type: String,
         required: true,
     },
-    paymentMehod: {
+    paymentMethod: {
         type: String,
         required: true,
     },
+    province: {
+        type: String,
+        required: true
+    }
+
 },
 );
 

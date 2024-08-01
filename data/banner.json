@@ -1,8 +1,11 @@
 [
     {
-        "imgSrc": "/assets/landingPage.png"
+        "imgSrc": "/assets/landing-page/Amaizax-bannerr.png"
     },
     {
-        "imgSrc": "/assets/l1.png"
+        "imgSrc": "/assets/landing-page/Nuehair-banner.jpg"
+    },
+    {
+        "imgSrc": "/assets/landing-page/Sonnpro-banner.jpg"
     }
 ]

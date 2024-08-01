@@ -45,13 +45,15 @@ const Products = () => {
                     </button>
                 ))}
             </div>
-            <div className="flex flex-wrap shrink justify-center items-center gap-5">
-                {filteredProducts.length > 0 ? (
-                    filteredProducts.map((data) => (
-                        <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} width='w-[80%]' />
-                    ))
-                ) : (<Image src="/assets/empty.svg" alt='no result' width={500} height={400} />
-                )}
+            <div className=" my-9 flex flex-col items-center justify-center">
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
+                    {filteredProducts.length > 0 ? (
+                        filteredProducts.map((data) => (
+                            <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} width='w-[80%]' />
+                        ))
+                    ) : (<Image src="/assets/empty.svg" loading='lazy' alt='no result' width={700} height={700} className='sm:ml-[500px] ml-12' />
+                    )}
+                </div>
             </div>
         </div>
     );

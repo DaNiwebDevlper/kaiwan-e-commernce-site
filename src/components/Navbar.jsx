@@ -55,7 +55,7 @@ const Navbar = () => {
                 <p>Now Cash on delivery available. All Over Pakistan</p>
                 <TbTruckDelivery className="text-2xl text-yellow-400" />
             </div>
-            <div className="w-full backdrop-blur-sm sticky z-20 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
+            <div className="w-full backdrop-blur-sm sticky z-50 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
 
                 {/* ////--Logo image */}
                 <Link href="/">
@@ -73,7 +73,7 @@ const Navbar = () => {
                             `}
                             >
                                 <Link href={link.href}
-                                    className={`${isActive ? "text-rose-400 font-bold" : ""}`}>{link.name}</Link>
+                                    className={`${isActive ? "text-rose-600 font-bold" : ""}`}>{link.name}</Link>
                             </li>
                         );
                     })}
@@ -94,7 +94,7 @@ const Navbar = () => {
                                     className="px-4 cursor-pointer capitalize py-6 text-2xl z-20"
                                 >
                                     <Link onClick={() => setNav(!nav)}
-                                        className={`${isActive ? "text-rose-500 font-semibold" : "text-black/60 dark:text-white/80"}`}
+                                        className={`${isActive ? "text-rose-700 font-semibold" : "text-black/60 dark:text-white/80"}`}
                                         href={link.href}>
                                         {link.name}
                                     </Link>

@@ -30,7 +30,7 @@ const ProductSchema = new Schema({
     featured: {
         type: Boolean,
         default: false,
-    },
+    }
 });
 
 const ProductModel = mongoose.models.products || mongoose.model('products', ProductSchema);
