@@ -1,9 +1,9 @@
 'use client'
-import Form from '@/components/login/Form'
 import React from 'react'
 import { makeToast } from '@/utils/Helper'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
+import LoginForm from '@/components/login/LoginForm'
 
 const Login = () => {
     const router = useRouter()
@@ -39,7 +39,7 @@ const Login = () => {
 
     return (
         <div className="grid min-h-[88vh] place-content-center">
-            <Form submitForm={formHandler} />
+            <LoginForm submitForm={formHandler} />
         </div>
     )
 }

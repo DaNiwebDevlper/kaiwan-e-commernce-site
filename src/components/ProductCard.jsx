@@ -20,9 +20,9 @@ const ProductCard = ({ id, title, imgSrc, price, quantity }) => {
             </div>
             <div className="flex justify-between items-center">
                 {quantity == 0 ? <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white cursor-not-allowed border dark:bg-transparent border-white/30' disabled>Sold out</button> :
-                    <Link href="/viewCart" className='w-full'>
-                        <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id, imgSrc, title, price, quantity }))}>Add to Cart</button>
-                    </Link>
+
+                    <button className='px-4 py-2 w-full text-sm rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id, imgSrc, title, price, quantity }))}>Add to Cart</button>
+
                 }
             </div>
         </div>

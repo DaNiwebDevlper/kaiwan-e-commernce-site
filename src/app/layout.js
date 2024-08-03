@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/darkMode/Provider";
 import { Navbar } from "@/components";
@@ -6,7 +6,7 @@ import App from "./App";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-const poppins = Poppins({ subsets: ["latin"], weight: ['300', '500', '600', '700', '400'] });
+const poppins = Lato({ subsets: ["latin"], weight: ['300', '400', '700', '900'] });
 
 export const metadata = {
   title: "e-commernce",

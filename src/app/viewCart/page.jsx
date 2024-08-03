@@ -3,12 +3,35 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks'
 import { addToCart, removeFromCart } from '@/redux/slice/CartSlice'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MdCancel, MdDelete } from 'react-icons/md'
-import CheckoutForm from '@/components/redux/CheckoutForm'
+import { useRouter } from 'next/navigation'
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react'
+import { MdCancel } from 'react-icons/md'
+import { MdShoppingCartCheckout } from "react-icons/md";
 
 const ViewCartPage = () => {
     const cartItems = useAppSelector(state => state.cart.cart)
     const dispatch = useAppDispatch()
+    const route = useRouter()
+    const [user, setUser] = useState(null)
+    useEffect(() => {
+        const userCookie = Cookies.get('user');
+        if (userCookie) {
+            setUser(JSON.parse(userCookie));
+
+        }
+    }, []);
+
+
+    /// add logoout feature
+    const handleCheckout = () => {
+        if (!user) {
+            route.push('/login');
+
+        } else {
+            route.push('/checkout');
+        }
+    };
 
     const handleIncrease = item => {
         dispatch(addToCart(item))
@@ -31,73 +54,64 @@ const ViewCartPage = () => {
         <div className='sm:p-5'>
             <h1 className='text-2xl font-mono font-bold mt-6 border-b pb-5 pl-5'>MY Shopping BAG</h1>
             <div className='flex sm:flex-row flex-col'>
-                <table className='w-full'>
-                    <thead className='w-full'>
-                        <tr className='font-thin text-left py-3 text-black/60 dark:text-white/70  w-full '>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Picture</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    {cartItems.length > 0 ? (
-                        <tbody className='w-full border-b-1'>
-                            {cartItems.map((items, index) => (
-                                <tr className='text-sm sm:text-lg border-b  border-black/10' key={index}>
-                                    <td>{items.title}</td>
-                                    <td>RS {items.price}</td>
-                                    <td className='py-2'>
-                                        <Image
-                                            src={`/${items.imgSrc}`}
-                                            alt='product_img'
-                                            width={50}
-                                            height={50}
-                                            className='w-[40px]'
-                                        />
-                                    </td>
-                                    <td>
-                                        <span className='flex items-center text-xl sm:gap-2 gap-1'>
-                                            <button className='text-2xl text-green-500' onClick={() => handleIncrease(items)}>
-                                                +
-                                            </button>
-                                            <span className='text-lg font-bold w-3'> {items.quantity} </span>
-                                            <button className='text-2xl text-red-500' onClick={() => handleDecrease(items)}>
-                                                -
-                                            </button>
-                                            <button className='text-2xl text-red-500'>
-                                                <MdCancel onClick={() => handleRemove(items)} />
-                                            </button>
-                                        </span>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    ) : (
-                        <span className='hidden sm:block min-h-[50vh] w-full  sm:pt-[50px]  sm:pl-[200px]'>
-                            <Image src='/assets/empty.svg' alt='empty' width={300} height={300} className='w-[400px]' />
-                            <p>
-                                Your cart is empty, please add some products:{' '}
-                                <Link href='/products' className='text-blue-500 underline'>
-                                    Product Page
-                                </Link>
-                            </p>
-                        </span>
+                <div className="sm:w-[70%]">
+                    {cartItems.length > 0 ? (<div className=" grid sm:grid-cols-2 gap-5 grid-cols-1 py-5">
+                        {
+                            cartItems.map((cartData, index) => {
+                                return (
+                                    <div className="w-[100%] flex gap-x-5 sm:border border-b p-4  items-center relative" key={index}>
+                                        <button>
+                                            <MdCancel className='text-xl text-red-500 absolute top-3 right-3' onClick={() => handleRemove(cartData)} />
+                                        </button>
+                                        <div className="">
+                                            <Image src={`/${cartData.imgSrc}`} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px]' />
+                                        </div>
+
+
+                                        <div className="flex flex-col gap-y-2
+                                    ">
+                                            <h1 className='text-xl font-semibold font-mono'>{cartData.title}</h1>
+                                            {/* ///////--Quantity Container--////// */}
+                                            <div className="border justify-evenly items-center flex w-[110px] h-[40px] overflow-hidden">
+                                                <button onClick={() => handleIncrease(cartData)} className='text-xl w-[33%] text-center border-r p-3'>+</button>
+                                                <p className='text-lg font-bold w-[34%] text-center'>{cartData.quantity}</p>
+                                                <button onClick={() => handleDecrease(cartData)} className='text-xl w-[33%] text-center border-l p-3'>-</button>
+                                            </div>
+                                            <p className='text-md'> <span className='font-semibold'>Price: </span> {cartData.price}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>) : (
+                        <div className="w-full flex justify-items-center items-center flex-col gap-5">
+                            <Image src="/assets/emptyCart.png" alt='empty CArt image' width={300} height={300} />
+                            <p className='text-center'>Your Cart is empty, please purchase some products <Link href="/products" className='underline text-blue-500'>Product Page</Link></p>
+                        </div>
                     )}
-                </table>
-                <CheckoutForm cartItems={cartItems} TotalPrice={totalCost} />
+                </div>
+
+                {/* /////////////--Summary--//////////////// */}
+                <div className='sm:w-[30%] sm:border-l flex flex-col gap-y-4 p-5 m-5'>
+                    <p className='text-xl font-bold'>Summary</p>
+                    <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
+                        Total Products: <span className='font-normal text-lg text-black dark:text-white'>{totalQuantity}</span>
+                    </p>
+                    <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
+                        SubTotal: <span className='font-normal text-lg text-black dark:text-white'>{totalCost}</span>
+                    </p>
+                    <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
+                        Delivery fees: <span className='font-normal text-lg text-black dark:text-white'>150</span>
+                    </p>
+                    <p className='border-t pt-2 text-md font-semibold dark:text-slate-400 text-slate-700'>
+                        Total Cost: <span className='font-normal text-lg text-green-500'>{totalCost + 150}</span>
+                    </p>
+                    <button className='flex gap-2 items-center px-4 py-2 w-full bg-black/80 active:scale-90 transition-all rounded-md dark:bg-rose-700 text-white  justify-center' onClick={handleCheckout}>Checkout <MdShoppingCartCheckout size={20} /></button>
+                </div>
+                {/* <CheckoutForm cartItems={cartItems} TotalPrice={totalCost} /> */}
             </div>
-            <div className=' sm:w-[30%] w-[90%] border rounded-xl flex flex-col gap-y-4 p-5 m-5'>
-                <p className='text-xl font-bold'>Summary</p>
-                <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
-                    Total Products: <span className='font-normal text-lg text-black dark:text-white'>{totalQuantity}</span>
-                </p>
-                <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
-                    Delivery fees: <span className='font-normal text-lg text-black dark:text-white'>150</span>
-                </p>
-                <p className='border-t pt-2 text-md font-semibold dark:text-slate-400 text-slate-700'>
-                    Total Cost: <span className='font-normal text-lg text-green-500'>{totalCost + 150}</span>
-                </p>
-            </div>
+
+
         </div>
     )
 }

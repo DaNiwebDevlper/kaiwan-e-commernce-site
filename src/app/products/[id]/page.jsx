@@ -31,8 +31,8 @@ const ProductDetail = () => {
             {products.map((product) => {
                 return (params.id == product._id ?
                     <div className="flex flex-col sm:flex-row gap-5 items-center ">
-                        <div className="sm:w-[400px] sm:h-[300px] overflow-hidden rounded-2xl">
-                            <Image src={`/${product.productImage}`} alt="product img" width={400} height={400} className="hover:scale-150  transition-all object-contain" />
+                        <div className="sm:w-[400px] sm:h-[400px] overflow-hidden  rounded-2xl">
+                            <Image src={`/${product.productImage}`} alt="product img" width={400} height={400} className="hover:scale-150 transition-all object-contain" />
                         </div>
 
                         <div className="sm:w-[60%] flex flex-col gap-y-5 justify-center">

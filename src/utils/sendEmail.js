@@ -11,8 +11,8 @@ async function sendDetailToGmail(data) {
         debug: true,
         secureConnection: false,
         auth: {
-            user: "343danish@gmail.com",
-            pass: "lemb qxpb gbzu clav",
+            user: "kaiwanpharma@gmail.com",
+            pass: "cjmc vpnu jodp gpuy",
         },
         tls: {
             rejectUnauthorized: true,
@@ -24,14 +24,15 @@ async function sendDetailToGmail(data) {
             <h4><span style="color:green;">Product Title:</span> ${items.title}</h4>
             <h4><span style="color:green;">Product Price:</span> ${items.price}</h4>
              <h4><span style="color:green;">Product Quantity:</span> ${items.quantity}</h4>
+            
       </div>`;
     });
 
     let mailOptions = {
-        from: "343danish@gmail.com",
-        to: "ar5051055@gmail.com",
+        from: "kaiwanpharma@gmail.com",
+        to: "Kaiwanhealthcare226@gmail.com",
         subject: "Kaiwan Pharma : SomeOne Buy some products",
-        html: `<h3 style="color:green;">Kaiwan Pharma</h3><h4 style="color:red;">This User checkout some products </h4><h4 style="color:green;">Total checkout products or quantity: ${data.cartItems.length} </h4><h4><span style="color:green;" >Name: </span> ${data.name}  <span style="color:green;"> Email:</span> ${data.email}   <span style="color:green;">Order ID:</span> ${data.orderId} <span style="color:green;">Address:</span> ${data.address} <span style="color:green;">Province:</span>${data.province} <span style="color:green;">Phone Number:</span> ${data.phoneNo} </h4> <h4><span style="color:green;">Total Price:</span> ${data.totalPrice}   <span style="color:green;">Payment Mehod:</span> ${data.paymentMethod} </h4> <h4><span style="color:blue;">CheckOut Product Items Here:</span> </h4>${productItems}`,
+        html: `<h3 style="color:green;">Kaiwan Pharma</h3><h4 style="color:red;">This User checkout some products </h4><h4 style="color:green;">Total checkout products Quantity: ${data.cartItems.length} </h4> <h4 style="color:green;">Total Price: ${data.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} </h4> <h4><span style="color:green;" >Name: </span> ${data.name}  <span style="color:green;"> Email:</span> ${data.email}   <span style="color:green;">Order ID:</span> ${data.orderId} <span style="color:green;">Address:</span> ${data.address} <span style="color:green;">Province:</span>${data.province} <span style="color:green;">Phone Number:</span> ${data.phoneNo} </h4> <h4> <span style="color:green;">Payment Mehod:</span> ${data.paymentMethod} </h4> <h4><span style="color:blue;">CheckOut Product Items Here:</span> </h4>${productItems}`,
     };
 
     // send otp to email

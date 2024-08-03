@@ -7,17 +7,6 @@ import { ImLocation } from "react-icons/im";
 import { MdMarkEmailRead, MdPhone } from "react-icons/md";
 const Contact = () => {
 
-    // var imageStyle = {
-    //     background:
-    //         'linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/bg-contnet2.svg") no-repeat',
-    //     backgroundSize: "cover",
-    //     width: "100%",
-    //     height: "100%",
-    //     backgroundPosition: "center",
-
-    //     // Adjust the height as needed
-    // };
-
     return (
         <div className="flex flex-col justify-center items-center">
             <Image src="/assets/contact.png" width={500} height={300} alt="banner" className="w-[90%] shadow-lg mt-5 rounded-2xl h-full mb-9" />
@@ -25,7 +14,7 @@ const Contact = () => {
 
                 {/* //////// --- Google Map --- //////// */}
                 <div className="sm:w-[40%] w-[90%] min-h-[500px] bg-slate-700 overflow-hidden rounded-xl">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.049017051536!2d73.10085857397614!3d31.412775552452896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392269077445bbb9%3A0x3412483ac999ed74!2sKaiwan%20Pharma!5e0!3m2!1sen!2s!4v1722489741431!5m2!1sen!2s" className="w-[400px] sm:w-[500px] h-[600px]" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.049017051536!2d73.10085857397614!3d31.412775552452896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392269077445bbb9%3A0x3412483ac999ed74!2sKaiwan%20Pharma!5e0!3m2!1sen!2s!4v1722489741431!5m2!1sen!2s" className="w-[400px] lg:w-[500px] xl:w-[700px] h-[600px]" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 
                 <div className="flex flex-col gap-y-7 w-full sm:w-[55%]  px-7">
                     <h1 className="sm:text-3xl font-madimi font-bold text-2xl title-font">

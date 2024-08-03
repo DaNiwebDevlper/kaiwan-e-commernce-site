@@ -31,20 +31,20 @@ const About = () => {
 
                 <div className="flex flex-col gap-y-5 sm:w-[60%]">
                     <h2 className='text-3xl text-center font-madimi font-semibold uppercase'>Our Values</h2>
-                    <p className='dark:text-slate-400 text-center text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Salvation :</span> We believe in the power of healing and restoration. Our products are designed to rejuvenate and revitalize, bringing renewed health and vitality to your skin and body.
+                    <p className='dark:text-slate-400 text-left text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Salvation :</span> We believe in the power of healing and restoration. Our products are designed to rejuvenate and revitalize, bringing renewed health and vitality to your skin and body.
                     </p>
 
-                    <p className='dark:text-slate-400 text-center text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Integrity :</span> We operate with honesty, transparency, and integrity in all our dealings, building trust with our customers, partners, and stakeholders.
+                    <p className='dark:text-slate-400 text-left text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Integrity :</span> We operate with honesty, transparency, and integrity in all our dealings, building trust with our customers, partners, and stakeholders.
 
                     </p>
 
-                    <p className='dark:text-slate-400 text-center text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Customer Focus :</span> Our customers are at the center of everything we do. We strive to understand their needs and provide solutions that enhance their health and well-being
+                    <p className='dark:text-slate-400 text-left text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Customer Focus :</span> Our customers are at the center of everything we do. We strive to understand their needs and provide solutions that enhance their health and well-being
                     </p>
 
-                    <p className='dark:text-slate-400 text-center text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Quailty :</span> Our commitment to quality ensures that every product we offer is safe, effective, and manufactured to the highest standards.
+                    <p className='dark:text-slate-400 text-left text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Quailty :</span> Our commitment to quality ensures that every product we offer is safe, effective, and manufactured to the highest standards.
                     </p>
 
-                    <p className='dark:text-slate-400 text-center text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Wisdom :</span> We value the wisdom gained through experience and knowledge. Our products are developed with a deep understanding of skincare and healthcare needs, ensuring they deliver effective and lasting results.
+                    <p className='dark:text-slate-400 text-left text-black/70'><span className='text-xl font-semibold dark:text-slate-300 text-black/80'>Wisdom :</span> We value the wisdom gained through experience and knowledge. Our products are developed with a deep understanding of skincare and healthcare needs, ensuring they deliver effective and lasting results.
                     </p>
                 </div>
             </div>

@@ -122,10 +122,10 @@ const Navbar = () => {
                     {!user ? (
                         <div className="flex items-center ">
                             <Link href="/login">
-                                <button className="text-md font-semibold font-madimi px-3 py-1   border-r border-black/40 dark:border-white/50  active:scale-90  cursor-pointer ">Login</button>
+                                <button className="text-md font-semibold font-madimi px-3 py-1   sm:border-r border-black/40 dark:border-white/50  active:scale-90  cursor-pointer ">Login</button>
                             </Link>
                             <Link href="/register">
-                                <button className="text-md  font-semibold font-madimi px-3 py-1  active:scale-90   cursor-pointer">Sign up</button>
+                                <button className="text-md  font-semibold font-madimi px-3 py-1  active:scale-90 hidden sm:block  cursor-pointer">Sign up</button>
                             </Link>
                         </div>
                     ) : (

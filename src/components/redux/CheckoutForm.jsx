@@ -1,15 +1,16 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { makeToast } from '@/utils/Helper'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks'
 import { setLoading } from '@/redux/slice/loadingSlice'
-import { Loader } from 'lucide-react'
+import { setOrderDetails } from '@/redux/slice/OrderDetails'
+import Loader from '../admin-panel/Loader'
 
 const provinces = ['Punjab', 'Sindh', 'Khyber Pakhtunkhwa', 'Balochistan', 'Gilgit-Baltistan', 'Azad Kashmir']
 
-const CheckoutForm = ({ cartItems, TotalPrice }) => {
+const CheckoutForm = ({ cartItems }) => {
     const route = useRouter()
     const dispatch = useAppDispatch()
     const isLoading = useAppSelector(store => store.loading)
@@ -18,23 +19,18 @@ const CheckoutForm = ({ cartItems, TotalPrice }) => {
         email: '',
         address: '',
         phoneNo: '',
-        totalPrice: '',
         paymentMethod: '',
-        province: ''
+        province: '',
+        note: ''
     })
-    const [showBankDetails, setShowBankDetails] = useState(false)
-    const [orderId, setOrderId] = useState('')
-
-    useEffect(() => {
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            totalPrice: TotalPrice
-        }))
-    }, [TotalPrice])
 
     const handleChange = e => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
+        const { name, value, type, checked } = e.target
+        if (type === 'checkbox') {
+            setFormData({ ...formData, paymentMethod: checked ? value : '' })
+        } else {
+            setFormData({ ...formData, [name]: value })
+        }
     }
 
     const getNextOrderId = async () => {
@@ -42,55 +38,38 @@ const CheckoutForm = ({ cartItems, TotalPrice }) => {
         return response.data.orderId
     }
 
-    const handleCashOnDelivery = async () => {
+    const handlePlaceOrder = async () => {
         try {
+            dispatch(setLoading(true))
             const newOrderId = await getNextOrderId()
-            const orderData = {
-                ...formData,
-                cartItems,
-                orderId: newOrderId,
-                paymentMethod: 'Cash on Delivery'
+            const orderData = { ...formData, cartItems, orderId: newOrderId }
+
+            // Ensure that cartItems is defined and structured correctly
+            if (!Array.isArray(cartItems) || cartItems.length === 0) {
+                throw new Error('Cart items are not properly defined')
             }
 
             // Send data to backend API
             await axios.post('/api/orders', orderData)
-            makeToast('Order is placed successfully')
+            makeToast('Order placed successfully')
             dispatch(setLoading(false))
-            route.push(`/payment?orderId=${newOrderId}`)
-            // Navigate to the payment page
+            dispatch(setOrderDetails(orderData))
+            route.push('/payment')
         } catch (error) {
             console.error('Checkout error:', error)
-        }
-    }
-
-    const handleBankTransfer = async () => {
-        try {
-            const newOrderId = await getNextOrderId()
-            setOrderId(newOrderId)
-            setShowBankDetails(true)
-            const orderData = {
-                ...formData,
-                cartItems,
-                orderId: newOrderId,
-                paymentMethod: 'Bank Transfer'
-            }
-
-            // Send data to backend API
-            await axios.post('/api/orders', orderData)
-            makeToast('Order is placed successfully')
-        } catch (error) {
-            console.error('Checkout error:', error)
+            dispatch(setLoading(false))
+            makeToast('Error placing order')
         }
     }
 
     return (
-        <form className='max-w-md mx-auto p-6 shadow-md border-l'>
+        <form className='w-full'>
             {isLoading && (
                 <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50'>
                     <Loader />
                 </div>
             )}
-            <h1 className='text-2xl font-bold my-4 font-madimi'>Checkout Form</h1>
+            <h1 className='text-3xl font-bold my-4 font-madimi'>Checkout Form</h1>
             <input
                 className='w-full mb-2 p-2 border border-gray-300 rounded'
                 name='name'
@@ -132,44 +111,53 @@ const CheckoutForm = ({ cartItems, TotalPrice }) => {
                     </option>
                 ))}
             </select>
+            <textarea
+                className='w-full mb-4 p-2 border border-gray-300 rounded'
+                name='note'
+                placeholder='Add any additional notes related to delivery(optional)'
+                onChange={handleChange}
+            />
             <div className='h-[2px] my-5 w-full bg-black dark:bg-white/60'></div>
 
-            {!showBankDetails ? (
-                <>
-                    <button
-                        type='button'
-                        onClick={handleCashOnDelivery}
-                        className='w-full bg-green-500 text-white py-2 rounded mb-5'
-                    >
+            <div className='flex gap-5 flex-col'>
+                <div className="">
+                    <h1 className='text-xl font-semibold font-madimi mb-3'>Payment Method</h1>
+                    <label className='mr-2'>
+                        <input
+                            type='checkbox'
+                            name='paymentMethod'
+                            value='Cash on Delivery'
+                            checked={formData.paymentMethod === 'Cash on Delivery'}
+                            onChange={handleChange}
+                            className='mr-2'
+                        />
                         Cash on Delivery
-                    </button>
-                    <button
-                        type='button'
-                        onClick={handleBankTransfer}
-                        className='w-full bg-yellow-500 text-white py-2 rounded'
-                    >
+                    </label>
+                    <label className='ml-4'>
+                        <input
+                            type='checkbox'
+                            name='paymentMethod'
+                            value='Bank Transfer'
+                            checked={formData.paymentMethod === 'Bank Transfer'}
+                            onChange={handleChange}
+                            className='text-xl mx-2'
+                        />
                         Bank Transfer
-                    </button>
-                </>
-            ) : (
-                <div className='bank-details'>
-                    <div className='border p-5 border-red-600 mb-5'>
-                        <h2 className='text-xl text-red-500 font-semibold mb-3'>Note</h2>
-                        <p>
-                            Please add the <b>Order ID</b> as a <b>reference number</b>. If
-                            you do not add the Order ID, the payment will not be considered.
-                            For more information contact us: <u>0370-4381300</u>
-                        </p>
-                    </div>
-                    <p>MUHAMMAD ASIF SHAHZAD</p>
-                    <p>Meezan Bank- Mianwali Branch</p>
-                    <p>Account Number: 80010104939803</p>
-                    <p>IBAN: PK21MEZN0080010104939803</p>
-                    <p>
-                        <b>Order ID:</b> {orderId}
-                    </p>
+                    </label>
                 </div>
-            )}
+                <div className="w-full border border-red-500 p-5 mb-5">
+                    <h1 className='text-xl font-bold text-rose-500'>Note:</h1>
+                    <p className='text-black/70 dark:text-slate-400'><span className='font-semibold dark:text-white text-black'>Bank Transfer:</span> is a manual system, means when you select the bank transfer payment method and place the order, then shows the bank account details, where you send the payment</p>
+                </div>
+            </div>
+
+            <button
+                type='button'
+                onClick={handlePlaceOrder}
+                className='w-full dark:bg-rose-500 bg-black/80 active:scale-95 transition-all text-white py-2 rounded'
+            >
+                Place Order
+            </button>
         </form>
     )
 }

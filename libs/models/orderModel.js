@@ -21,8 +21,8 @@ const orderSchema = new Schema({
         type: Array
     },
     totalPrice: {
-        type: String,
-        required: true,
+        type: String
+
     },
     paymentMethod: {
         type: String,
@@ -31,6 +31,11 @@ const orderSchema = new Schema({
     province: {
         type: String,
         required: true
+    }, address: {
+        type: String,
+        required: true
+    }, note: {
+        type: String
     }
 
 },

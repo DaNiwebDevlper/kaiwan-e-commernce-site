@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
-import { BsFacebook } from 'react-icons/bs'
-import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa'
+import { FaInstagram, FaTiktok } from 'react-icons/fa'
 import { FaSquareFacebook } from 'react-icons/fa6'
 import { MdPhone } from 'react-icons/md'
 
@@ -11,20 +9,20 @@ const Footer = () => {
             <h1 className='text-3xl text-white font-madimi text-center  my-9'>Kaiwan Pharma</h1>
             <div className="flex sm:justify-around items-start gap-y-9 w-full flex-wrap">
                 {/* ////////---Social Links---////////// */}
-                <div className="flex flex-col gap-y-5">
-                    <h2 className='text-lg font-semibold font-madimi text-gray-200 text-center'>Quality with Innovation</h2>
+                <div className="flex flex-col gap-y-5 justify-center items-center">
+                    <h2 className='text-lg font-semibold font-madimi text-gray-200 text-center'>Your health is our promiss</h2>
                     <div className="flex gap-4 items-center">
 
                         <Link href="https://www.facebook.com/kaiwanpharma?mibextid=ZbWKwL" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">
-                            <FaSquareFacebook className="text-[25px] text-blue-500" />
+                            <FaSquareFacebook className="text-[25px]" />
                         </Link>
 
                         <Link href="https://www.tiktok.com/@kaiwanpharmaL" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">
-                            <FaTiktok className="text-[20px] hover:text-purple-800" />
+                            <FaTiktok className="text-[20px] " />
                         </Link>
 
                         <Link href="https://www.instagram.com/kaiwan_pharma?igsh=Z2VpZWFveXM0ajhx" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">
-                            <FaInstagram className="text-[25px] text-rose-500" />
+                            <FaInstagram className="text-[25px]" />
                         </Link>
 
                     </div>
