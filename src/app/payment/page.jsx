@@ -25,15 +25,14 @@ const Payment = () => {
                         <p>Meezan Bank- Mianwali Branch</p>
                         <p><b>Account Number:</b> 80010104939803</p>
                         <p><b>IBAN:</b> PK21MEZN0080010104939803</p>
-                        <div className='border border-rose-500 p-3 my-5
-                        '>
+                        <div className='border border-rose-500 p-3 my-5'>
                             <p className='text-xl font-semibold text-rose-500 mb-2'>
                                 Note:
                             </p>
                             <p className='text-md text-black/80 dark:text-slate-400'>
-                                Add the order ID as a reference number. If you don't add it, the payment will not be accepted. <br /> For more details contact us: 0370-4381300   </p>
+                                Add the order ID as a reference number. If you do not add it, the payment will not be accepted.<br />For more details contact us: 0370-4381300
+                            </p>
                         </div>
-
                     </div>
                 )}
             </div>
