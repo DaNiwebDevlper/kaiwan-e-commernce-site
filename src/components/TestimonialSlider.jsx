@@ -58,7 +58,7 @@ const TestimonialSlider = ({ testimonials }) => {
     return (
         <div className='p-9 min-h-screen'>
             <div className='my-9'>
-                <p className='text-rose-500 font-semibold my-5'>__User-review</p>
+
                 <h1 className='sm:text-4xl text-3xl font-semibold'>
                     Hear <span className='text-[#AEB2BA]'>What</span> Others Have to Say
                 </h1>

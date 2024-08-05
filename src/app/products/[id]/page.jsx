@@ -48,7 +48,7 @@ const ProductDetail = () => {
 
                                 <div className="flex flex-col w-full gap-y-5  ">
                                     <div className="">
-                                        <p className="flex gap-x-2 items-center"><span className="text-lg font-semibold text-md font-mono">Availablity: </span>{product.productQuantity == 0 ? <span className="text-rose-600">Sold out</span> : <span className="text-green-500 text-sm">In stock</span>}</p>
+                                        <p className="flex gap-x-2 items-center"><span className="text-lg font-semibold text-md font-mono">Availablity: </span>{product.productQuantity == 0 ? <span className="text-rose-600">Out of Stock</span> : <span className="text-green-500 text-sm">In stock</span>}</p>
                                     </div>
                                     <div className="">
                                         {product.productQuantity == 0 ? <button className='px-4 py-2 rounded-lg bg-black text-white active:scale-90 border dark:bg-rose-700 transition-all flex gap-1 justify-center items-center text-sm cursor-not-allowed' disabled >Sold out</button> :

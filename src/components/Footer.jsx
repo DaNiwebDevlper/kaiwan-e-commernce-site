@@ -33,7 +33,7 @@ const Footer = () => {
                     <p className='text-xl font-semibold font-madimi text-gray-200'>Contact Us</p>
                     <address>
                         <span className='text-rose-500 italic'>Address: </span>
-                        <Link href="https://www.google.com/maps/place/Kaiwan+Pharma/@31.412771,73.1034335,15z/data=!4m6!3m5!1s0x392269077445bbb9:0x3412483ac999ed74!8m2!3d31.412771!4d73.1034335!16s%2Fg%2F11y5by9nfr?entry=ttu" target="_blank" className="font-normal text-gray-400">Plot 1432, Pilot Ground Block B people&apos;s Colony No 1, Faisalabad Punjab, Pakistan</Link>
+                        <Link href="https://www.google.com/maps/place/lahore/data=!4m6!3m5!1s0x392269077445bbb9:0x3412483ac999ed74!8m2!3d31.412771!4d73.1034335!16s%2Fg%2F11y5by9nfr?entry=ttu" target="_blank" className="font-normal text-gray-400"> Lahore, Pakistan</Link>
                     </address>
                     <p className="text-rose-500 ">Email: <Link href="mailto:kaiwanpharma@gmail.com" className="text-gray-400" target="_blank">kaiwanpharma@gmail.com</Link></p>
 

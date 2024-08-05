@@ -111,7 +111,7 @@ const ViewCartPage = () => {
                     </p>
                     <button className='flex gap-2 items-center px-4 py-2 w-full bg-black/80 active:scale-90 transition-all rounded-md dark:bg-rose-700 text-white  justify-center' onClick={handleCheckout}>Checkout <MdShoppingCartCheckout size={20} /></button>
                 </div>
-                {/* <CheckoutForm cartItems={cartItems} TotalPrice={totalCost} /> */}
+
             </div>
 
 
