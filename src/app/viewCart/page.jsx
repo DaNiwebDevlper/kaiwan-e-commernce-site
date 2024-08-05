@@ -52,7 +52,10 @@ const ViewCartPage = () => {
 
     return (
         <div className='sm:p-5'>
-            <h1 className='text-2xl font-mono font-bold mt-6 border-b pb-5 pl-5'>MY Shopping BAG</h1>
+            <div className="flex flex-col sm:flex-row gap-y-2  sm:justify-between p-5 border-b sm:items-center">
+                <h1 className='text-2xl font-mono font-bold  sm:pl-5'>MY Shopping BAG</h1>
+                <Link href="/products" className='text-md underline pb-1 text-rose-500'>Contnioue shoping</Link>
+            </div>
             <div className='flex sm:flex-row flex-col'>
                 <div className="sm:w-[70%]">
                     {cartItems.length > 0 ? (<div className=" grid sm:grid-cols-2 gap-5 grid-cols-1 py-5">
@@ -85,8 +88,8 @@ const ViewCartPage = () => {
                         }
                     </div>) : (
                         <div className="w-full flex justify-items-center items-center flex-col gap-5">
-                            <Image src="/assets/emptyCart.png" alt='empty CArt image' width={300} height={300} />
-                            <p className='text-center'>Your Cart is empty, please purchase some products <Link href="/products" className='underline text-blue-500'>Product Page</Link></p>
+                            <Image src="/assets/emptyCart.png" alt='empty CArt image' width={300} height={300} className='sm:w-[350px] sm:h-[350px] w-[250px] h-[250px]' />
+                            <p className='text-center sm:text-lg text-sm w-[90%] sm:w-full'>Your Cart is empty, please purchase some products <Link href="/products" className='underline text-blue-500'>Product Page</Link></p>
                         </div>
                     )}
                 </div>

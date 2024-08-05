@@ -24,9 +24,7 @@ export const theme = {
         },
       },
     },
-    fontFamily: {
-      'madimi': ['Madim One', 'cursive'],
-    },
+
   },
 };
 export const plugins = [addVariablesForColors];

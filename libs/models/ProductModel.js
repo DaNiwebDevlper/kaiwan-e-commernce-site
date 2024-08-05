@@ -23,6 +23,7 @@ const ProductSchema = new Schema({
     },
     productQuantity: {
         type: String,
+        required: true
     },
     fileKey: {
         type: String,
@@ -30,6 +31,9 @@ const ProductSchema = new Schema({
     featured: {
         type: Boolean,
         default: false,
+    }, productDiscountPrice: {
+        type: String,
+
     }
 });
 

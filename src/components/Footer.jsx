@@ -5,12 +5,12 @@ import { MdPhone } from 'react-icons/md'
 
 const Footer = () => {
     return (
-        <footer className='bg-gradient-to-t from-black p-5 to-gray-900 text-gray-400 border-t'>
+        <footer className='bg-black p-3 text-gray-400 border-t'>
             <h1 className='text-3xl text-white font-madimi text-center  my-9'>Kaiwan Pharma</h1>
             <div className="flex sm:justify-around items-start gap-y-9 w-full flex-wrap">
                 {/* ////////---Social Links---////////// */}
                 <div className="flex flex-col gap-y-5 justify-center items-center">
-                    <h2 className='text-lg font-semibold font-madimi text-gray-200 text-center'>Your health is our promiss</h2>
+                    <h2 className='text-lg font-semibold font-madimi text-gray-200 text-center'>Your health is our promise</h2>
                     <div className="flex gap-4 items-center">
 
                         <Link href="https://www.facebook.com/kaiwanpharma?mibextid=ZbWKwL" className="w-[40px] border h-[40px] flex justify-center items-center hover:bg-black/70 duration-300 cursor-pointer" target="_blank">

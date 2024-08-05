@@ -5,7 +5,7 @@ const BeforeAfter = () => {
     return (
         <div className="min-h-[90vh] flex justify-center items-center flex-col gap-y-9">
             <div className="w-fit">
-                <h1 className="sm:text-3xl text-2xl font-semibold font-madimi"> See How Effectively They WorkS </h1>
+                <h1 className="sm:text-3xl text-2xl font-semibold font-madimi"> See How Effectively They Works </h1>
                 <p className="text-md font-mono text-center mb-5 mt-2 text-black/60 dark:text-gray-400">Place your order Now</p>
             </div>
 

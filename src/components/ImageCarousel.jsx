@@ -36,13 +36,13 @@ const ImageCarousel = ({ images }) => {
             </div>
             <button
                 onClick={prevImage}
-                className="absolute top-1/2 left-1"
+                className="absolute top-1/2 left-1 sm:block hidden"
             >
                 <GrPrevious size={40} className='opacity-50  hover:opacity-100 transition-all' />
             </button>
             <button
                 onClick={nextImage}
-                className="absolute top-1/2 right-1  "
+                className="absolute top-1/2 right-1  sm:block hidden"
             >
                 <GrNext size={40} className='opacity-50  hover:opacity-100 transition-all' />
             </button>

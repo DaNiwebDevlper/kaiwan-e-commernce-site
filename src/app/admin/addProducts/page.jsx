@@ -1,12 +1,10 @@
 "use client";
-
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { setLoading } from "@/redux/slice/loadingSlice";
 import { makeToast } from "@/utils/Helper";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
-
 
 export const CategoryOptions = [
     'Whitening', 'Hair Care', 'Sunblock', 'Acne', 'Moisturizer', 'All'
@@ -17,6 +15,7 @@ const AddProduct = () => {
     const [data, setData] = useState({
         productName: "",
         productPrice: "",
+        productDiscountPrice: "", // Add discount price here
         productQuantity: "",
         productCategory: "Sunblock",
         productDetail: "",
@@ -41,6 +40,7 @@ const AddProduct = () => {
         const formdata = new FormData();
         formdata.append('name', data.productName);
         formdata.append('price', data.productPrice);
+        formdata.append('productDiscountPrice', data.productDiscountPrice); // Add discount price to form data
         formdata.append('category', data.productCategory);
         formdata.append('detail', data.productDetail);
         formdata.append('quantity', data.productQuantity);
@@ -56,6 +56,7 @@ const AddProduct = () => {
                 setData({
                     productName: "",
                     productPrice: "",
+                    productDiscountPrice: "", // Reset discount price
                     productQuantity: "",
                     productCategory: "Sunblock",
                     productDetail: "",
@@ -97,6 +98,10 @@ const AddProduct = () => {
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Price: </p>
                     <input type='number' name='productPrice' onChange={onChangeHandler} value={data.productPrice} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
+                </div>
+                <div className="">
+                    <p className='text-black/80 dark:text-white/80 pl-2'>Discount Price: </p>
+                    <input type='number' name='productDiscountPrice' onChange={onChangeHandler} value={data.productDiscountPrice} className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Quantity: </p>

@@ -1,4 +1,4 @@
-import { ImageCarousel, Banner, Kimsoft, Amaizax, BeforeAfter } from "@/components";
+import { ImageCarousel, Banner, Snnopro, Amaizax, BeforeAfter } from "@/components";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import banner from "../../data/banner.json";
 import { user_review_data } from "../../data/user-review-data";
@@ -12,7 +12,7 @@ export default function Home() {
       <Amaizax />
       <Banner />
       <BeforeAfter />
-      <Kimsoft />
+      <Snnopro />
       <TestimonialSlider testimonials={user_review_data} />
 
 

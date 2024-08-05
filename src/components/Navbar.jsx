@@ -69,7 +69,7 @@ const Navbar = () => {
                         return (
                             <li
                                 key={link.href}
-                                className={`nav-links px-4 cursor-pointer capitalize font-medium text-md link-underline
+                                className={`nav-links px-4 cursor-pointer capitalize font-medium text-lg link-underline
                             `}
                             >
                                 <Link href={link.href}
@@ -85,7 +85,7 @@ const Navbar = () => {
                 </div>
 
                 {nav && (
-                    <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full min-h-screen dark:bg-slate-900 bg-slate-100 text-gray-800 z-20">
+                    <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full min-h-screen dark:bg-[#222] bg-slate-100 text-gray-800 z-20">
                         {links.map((link) => {
                             const isActive = pathname.endsWith(link.href);
                             return (

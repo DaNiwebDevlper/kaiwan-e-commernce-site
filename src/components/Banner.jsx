@@ -13,7 +13,7 @@ const Banner = () => {
                         <button className='text-md px-6 py-3 rounded-lg text-white bg-rose-500 active:scale-90 transition-all cursor-pointer'>Buy Now</button>
                     </Link>
                 </div>
-                <Image loading='lazy' src="/assets/banner.png" width={300} height={500} alt='banner' className=' absolute sm:right-[150px] right-9  sm:top-[-70px] top-[-100px] sm:w-[300px] w-[220px] h-[270px] sm:h-[350px]' />
+                <Image loading='lazy' src="/assets/banner.png" width={300} height={500} alt='banner' className=' absolute sm:right-[150px] right-9  sm:top-[-70px] top-[-60px] sm:w-[300px] w-[200px] h-[230px] sm:h-[350px]' />
             </div>
         </div>
     )

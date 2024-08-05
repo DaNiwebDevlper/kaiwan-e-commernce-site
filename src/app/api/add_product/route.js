@@ -28,7 +28,8 @@ export async function POST(req) {
             productQuantity: formData.get('quantity'),
             productImage: imgUrl,
             productPrice: formData.get('price'),
-            featured: formData.get('featured') == 'true'
+            featured: formData.get('featured') == 'true',
+            productDiscountPrice: formData.get('productDiscountPrice')
         };
 
         await ProductModel.create(productData);
