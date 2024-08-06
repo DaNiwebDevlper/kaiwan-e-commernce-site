@@ -8,4 +8,16 @@ export const makeToast = (text) => {
             borderRadius: "4px"
         }
     })
+
+
+}
+
+export const errorToast = (text) => {
+    toast.error(text, {
+        style: {
+            background: "#333",
+            color: "#fff",
+            borderRadius: "4px"
+        }
+    })
 }

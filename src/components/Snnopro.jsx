@@ -15,7 +15,7 @@ const Snnopro = () => {
                             <Image src="/assets/icons/Snnopro/light-skin.png" alt="icons" width={40} height={40} />
                         </div>
                         <div className="w-[80%]">
-                            <p className="sm:text-xl text-black text-md font-bold font-mono">Light Skin</p>
+                            <p className="sm:text-xl text-black text-md font-bold font-mono">Lighten The Skin</p>
                             <p className="sm:text-sm text-[12px] text-orange-700">It reduce the melanin, that make skin more white and bright</p>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ const Snnopro = () => {
                         <div className="w-[80%]">
                             <p className="sm:text-xl text-black text-md font-bold font-mono">UVA/UVB</p>
                             <p className="sm:text-sm text-[12px] text-orange-700">
-                                It protects your skin from UVA/UVB light
+                                It protects your skin from UVA/UVB rays
                             </p>
                         </div>
                     </div>
@@ -39,16 +39,21 @@ const Snnopro = () => {
                         <div className="w-[80%]">
                             <p className="sm:text-xl text-black text-md font-bold font-mono">SPF</p>
                             <p className="sm:text-sm text-[12px] text-orange-700">
-                                It protects your skin from UVA/UVB light
+                                It provide upto 60+ sun protection factor from UV rays
                             </p>
                         </div>
                     </div>
                 </div>
+
+                {/* ///////// main image */}
                 <div className="flex justify-center items-start ">
                     <Image src="/assets/highlight-products/snnopro.png" alt="kimsoft" width={100} height={300}
                         className="sm:w-[170px] sm:h-[390px] w-[140px] h-[320px] object-contain" />
                 </div>
-                <div className="sm:flex flex-col gap-y-9 items-center justify-center hidden">
+
+
+                {/* /////////---right side details*/}
+                <div className="sm:flex flex-col gap-y-9 items-start justify-center hidden">
                     <div className="flex gap-2">
                         <div className="border flex justify-center items-center overflow-hidden border-orange-500 rounded-full sm:w-[50px] sm:h-[50px] size-10">
                             <Image src="/assets/icons/Snnopro/recommanded.png" alt="icons" width={40} height={40} />
@@ -74,7 +79,7 @@ const Snnopro = () => {
                             <Image src="/assets/icons/Snnopro/sunburn.png" alt="icons" width={30} height={30} />
                         </div>
                         <div className="w-[80%]">
-                            <p className="sm:text-xl text-black text-md font-bold font-mono">Dead Skin</p>
+                            <p className="sm:text-xl text-black text-md font-bold font-mono">Sun Burn</p>
                             <p className="sm:text-sm text-[12px] text-orange-700">
                                 It protect your skin from sun radition, that make your skin dead
                             </p>

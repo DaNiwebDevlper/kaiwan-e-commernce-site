@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { makeToast } from '@/utils/Helper'
+import { errorToast, makeToast } from '@/utils/Helper'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
 import LoginForm from '@/components/login/LoginForm'
@@ -33,7 +33,7 @@ const Login = () => {
                 router.push('/')
             }
         } else {
-            makeToast(result.msg)
+            errorToast(result.msg)
         }
     }
 

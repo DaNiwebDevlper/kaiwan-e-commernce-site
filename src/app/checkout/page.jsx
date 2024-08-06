@@ -8,12 +8,9 @@ const CheckoutPage = () => {
     const cartItems = useAppSelector(state => state.cart.cart)
     return (
 
-        <div className='w-full flex'>
-            <div className="sm:w-[50%] w-full p-5">
+        <div className='w-full flex justify-center items-center'>
+            <div className="sm:w-[50%] shadow-lg  w-full p-5 my-9 rounded-lg border">
                 <CheckoutForm cartItems={cartItems} />
-            </div>
-            <div className="w-full sm:w-[50%] mt-[85px] hidden sm:block  overflow-hidden">
-                <Image src="/assets/form-pic.svg" alt="form pic" width={700} height={900} />
             </div>
         </div>
     )

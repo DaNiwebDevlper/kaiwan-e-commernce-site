@@ -31,6 +31,9 @@ const ViewCartPage = () => {
         } else {
             route.push('/checkout');
         }
+        if (cartItems.length === 0) {
+            route.push('/products')
+        }
     };
 
     const handleIncrease = item => {

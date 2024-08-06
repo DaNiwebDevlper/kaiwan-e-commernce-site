@@ -26,7 +26,7 @@ const About = () => {
                         </h2>
                         <p className='text-md text-center sm:text-left text-black/70 dark:text-slate-400'>To be the most influential natural skin care company in the world. Our ambition is not to be the biggest skin care company, what drives us is sharing the knowledge necessary to make great natural skin care products.</p>
                     </div>
-                    <Image src="/assets/vision.jpg" width={500} height={400} alt='our mission' className='rounded-2xl shadow-md' />
+                    <Image src="/assets/vision.png" width={450} height={400} alt='our mission' className='rounded-2xl shadow-md object-cover ' />
                 </div>
 
                 <div className="flex flex-col gap-y-5 sm:w-[60%]">

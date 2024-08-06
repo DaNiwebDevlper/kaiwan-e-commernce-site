@@ -1,11 +1,11 @@
 [
     {
+        "imgSrc": "/assets/landing-page/amaizax.png"
+    },
+    {
         "imgSrc": "/assets/landing-page/Nuehair-banner.jpg"
     },
     {
-        "imgSrc": "/assets/landing-page/sample3.png"
-    },
-    {
-        "imgSrc": "/assets/landing-page/sonnpro.jpg"
+        "imgSrc": "/assets/landing-page/sonnpro.png"
     }
 ]
