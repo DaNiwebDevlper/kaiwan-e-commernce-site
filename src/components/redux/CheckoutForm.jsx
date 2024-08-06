@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import axios from 'axios'
-import { makeToast } from '@/utils/Helper'
+import { errorToast, makeToast } from '@/utils/Helper'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks'
 import { setLoading } from '@/redux/slice/loadingSlice'
@@ -58,7 +58,7 @@ const CheckoutForm = ({ cartItems }) => {
         } catch (error) {
             console.error('Checkout error:', error)
             dispatch(setLoading(false))
-            makeToast('Error placing order')
+            errorToast('Error placing order')
         }
     }
 

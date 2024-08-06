@@ -3,7 +3,7 @@ import { connectDB } from "../../../../libs/config/db";
 
 export async function GET() {
     try {
-        const { db } = await connectDB();
+        const db = await connectDB();
 
         // Fetch the last used order ID
         const settings = await db.collection('orderId').findOne({ name: 'orderIdCounter' });

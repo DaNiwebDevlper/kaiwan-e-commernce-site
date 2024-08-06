@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { MdNavigateNext } from 'react-icons/md'
 import { GrFormPrevious } from 'react-icons/gr'
 import Image from 'next/image'
@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 const TestimonialSlider = ({ testimonials }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [animationDirection, setAnimationDirection] = useState(1)
-
 
     //// animation
     const variants = {
@@ -34,31 +33,28 @@ const TestimonialSlider = ({ testimonials }) => {
         })
     }
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
         setAnimationDirection(1)
         setCurrentSlide(prevSlide => (prevSlide === testimonials.length - 1 ? 0 : prevSlide + 1))
-    }
+    }, [testimonials.length])
 
-    const prevSlide = () => {
+    const prevSlide = useCallback(() => {
         setAnimationDirection(-1)
         setCurrentSlide(prevSlide => (prevSlide === 0 ? testimonials.length - 1 : prevSlide - 1))
-    }
-
+    }, [testimonials.length])
 
     /////// auto slide
-
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide()
         }, 5000)
 
         return () => clearInterval(interval)
-    }, [currentSlide])
+    }, [nextSlide])
 
     return (
         <div className='p-9 min-h-screen'>
             <div className='my-9'>
-
                 <h1 className='sm:text-4xl text-3xl font-semibold'>
                     Hear <span className='text-[#AEB2BA]'>What</span> Others Have to Say
                 </h1>

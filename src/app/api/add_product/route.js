@@ -18,7 +18,7 @@ export async function POST(req) {
 
         const path = `./public/productImages/${timeStamp}_${image.name}`;
         await writeFile(path, buffer);
-        const imgUrl = `productImages/${timeStamp}_${image.name}`; // Ensure path is relative to `public`
+        const imgUrl = `productImages/${timeStamp}_${image.name}`;
 
         // Product data
         const productData = {
