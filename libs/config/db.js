@@ -7,4 +7,3 @@ export const connectDB = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     return mongoose.connection;
 };
-connectDB();

@@ -1,20 +1,28 @@
+import "../../../../../libs/config/db";
 import { NextResponse } from "next/server";
-import { connectDB } from "../../../../../libs/config/db";
 import ProductModel from "../../../../../libs/models/ProductModel";
 export const dynamic = 'force-dynamic';
 export async function DELETE(request, { params }) {
-    try {
 
+    try {
         const id = params.id;
 
-        await connectDB();
-        await ProductModel.findByIdAndDelete(id);
-        console.log(id)
+
+        // const deleteProduct = await ProductModel.findByIdAndDelete(id);
+        const deleteProduct = await ProductModel.deleteOne({ _id: id })
+        console.log(deleteProduct);
+        if (!deleteProduct) {
+            return NextResponse.json({ msg: "DB Error" });
+        }
+
         return NextResponse.json({ msg: "Deleted Successfully" });
     } catch (error) {
-        return NextResponse.json({
-            msg: "Something went wrong",
-            error
-        }, { status: 400 });
+        return NextResponse.json(
+            {
+                msg: "Something went wrong",
+                error,
+            },
+            { status: 400 }
+        );
     }
 }
