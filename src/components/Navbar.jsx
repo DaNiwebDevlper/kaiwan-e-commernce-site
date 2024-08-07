@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeSwitcher from "./darkMode/ThemeSwitcher";
 import Image from "next/image";
@@ -19,19 +19,17 @@ const Navbar = () => {
     const router = useRouter();
 
     const cartItems = useAppSelector(state => state.cart.cart)
-    /// add to cart button
 
-
-
-
-    //// handle user login data
-    useEffect(() => {
+    /// handle user login data
+    useLayoutEffect(() => {
         const userCookie = Cookies.get('user');
         if (userCookie) {
             setUser(JSON.parse(userCookie));
 
         }
-    }, []);
+    }, [])
+
+
 
 
     /// add logoout feature
@@ -59,7 +57,7 @@ const Navbar = () => {
 
                 {/* ////--Logo image */}
                 <Link href="/">
-                    <Image src="/assets/products/logo.png" alt="logo" height={50} width={50} className="hidden sm:block w-[60px] text-white py-0 my-0" />
+                    <Image src="/assets/logo.png" alt="logo" height={50} width={50} className="hidden sm:block w-[60px] text-white py-0 my-0" />
                 </Link>
 
                 {/* /////////////////---NavLinks for desktop---////////////////// */}

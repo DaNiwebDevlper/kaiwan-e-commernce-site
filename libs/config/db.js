@@ -4,9 +4,7 @@ export const connectDB = async () => {
     if (mongoose.connection.readyState === 1) {
         return mongoose.connection;
     }
-    await mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGODB_URI);
     return mongoose.connection;
 };
+connectDB();

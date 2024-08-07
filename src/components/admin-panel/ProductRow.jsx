@@ -2,6 +2,7 @@
 import { useAppDispatch } from '@/redux/hooks/hooks'
 import { setLoading } from '@/redux/slice/loadingSlice'
 import { setProduct } from '@/redux/slice/productSlice'
+import { makeToast } from '@/utils/Helper'
 import axios from 'axios'
 import Image from 'next/image'
 import { FaEdit } from 'react-icons/fa'
@@ -26,7 +27,7 @@ const ProductRow = ({ srNo, setUpdateTable, setOpenPopup, product }) => {
 
         try {
             dispatch(setLoading(true));
-            await axios.delete(`/api/delete_product/${product._id}`);
+            await axios.delete(`/api/delete_product/${product._id}`).then((res) => makeToast(res.data.msg));
             setUpdateTable(prev => !prev); // Trigger a re-fetch of the products
         } catch (error) {
             console.error("Failed to delete the product", error);

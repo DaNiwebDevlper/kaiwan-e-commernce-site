@@ -24,7 +24,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }) => {
         dispatch(setLoading(true));
         axios.put(`/api/edit_product/${productData._id}`, inputData)
             .then((res) => {
-                makeToast("Product Updated Successfully!");
+                makeToast(res.data.msg);
                 setUpdateTable((prevState) => !prevState);
             })
             .catch(error => console.error(error))
