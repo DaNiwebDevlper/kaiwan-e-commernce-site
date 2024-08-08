@@ -1,7 +1,7 @@
 import "../../../../../libs/config/db";
 import { NextResponse } from "next/server";
 import ProductModel from "../../../../../libs/models/ProductModel";
-export const dynamic = 'force-dynamic';
+
 export async function DELETE(request, { params }) {
 
     try {
