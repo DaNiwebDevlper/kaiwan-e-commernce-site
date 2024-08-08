@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "../../../../../libs/config/db";
 import ProductModel from "../../../../../libs/models/ProductModel";
-
+export const dynamic = 'force-dynamic';
 export async function DELETE(request, { params }) {
     try {
         const id = params.id;
@@ -9,17 +9,38 @@ export async function DELETE(request, { params }) {
         const deleteProduct = await ProductModel.deleteOne({ _id: id });
 
         if (!deleteProduct.deletedCount) {
-            return NextResponse.json({ msg: "DB Error: Product not found" });
+            return new NextResponse(
+                JSON.stringify({ msg: "DB Error: Product not found" }),
+                {
+                    status: 400,
+                    headers: {
+                        'Cache-Control': 'no-store, max-age=0',
+                    },
+                }
+            );
         }
 
-        return NextResponse.json({ msg: "Deleted Successfully" });
-    } catch (error) {
-        return NextResponse.json(
+        return new NextResponse(
+            JSON.stringify({ msg: "Deleted Successfully" }),
             {
+                status: 200,
+                headers: {
+                    'Cache-Control': 'no-store, max-age=0',
+                },
+            }
+        );
+    } catch (error) {
+        return new NextResponse(
+            JSON.stringify({
                 msg: "Something went wrong",
                 error: error.message,
-            },
-            { status: 400 }
+            }),
+            {
+                status: 400,
+                headers: {
+                    'Cache-Control': 'no-store, max-age=0',
+                },
+            }
         );
     }
 }
