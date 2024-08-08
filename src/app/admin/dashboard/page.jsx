@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Popup from "@/components/admin-panel/Popup";
 import ProductRow from "@/components/admin-panel/ProductRow";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
@@ -6,7 +6,7 @@ import { setLoading } from "@/redux/slice/loadingSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import Loader from "@/components/admin-panel/Loader";
 
 const Page = () => {
@@ -15,16 +15,22 @@ const Page = () => {
     const [products, setProducts] = useState([]);
     const [openPopup, setOpenPopup] = useState(false);
     const [updateTable, setUpdateTable] = useState(false);
+
     useEffect(() => {
-        const user = Cookies.get('user');
-        if (!user || JSON.parse(user).email !== "kaiwanpharma@gmail.com" && JSON.parse(user).password !== "kaiwan134") {
-            router.push('/');
+        const user = Cookies.get("user");
+        if (
+            !user ||
+            (JSON.parse(user).email !== "kaiwanpharma@gmail.com" &&
+                JSON.parse(user).password !== "kaiwan134")
+        ) {
+            router.push("/");
         }
     }, [router]);
 
     useEffect(() => {
         dispatch(setLoading(true));
-        axios.get("/api/get_products")
+        axios
+            .get("/api/get_products")
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));
@@ -59,9 +65,7 @@ const Page = () => {
                     </table>
                 </div>
             </div>
-            {openPopup && (
-                <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
-            )}
+            {openPopup && <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />}
         </div>
     );
 };

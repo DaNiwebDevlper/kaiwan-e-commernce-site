@@ -1,18 +1,15 @@
-import "../../../../../libs/config/db";
 import { NextResponse } from "next/server";
+import { connectDB } from "../../../../../libs/config/db";
 import ProductModel from "../../../../../libs/models/ProductModel";
 
 export async function DELETE(request, { params }) {
-
     try {
         const id = params.id;
+        await connectDB();
+        const deleteProduct = await ProductModel.deleteOne({ _id: id });
 
-
-        // const deleteProduct = await ProductModel.findByIdAndDelete(id);
-        const deleteProduct = await ProductModel.deleteOne({ _id: id })
-        console.log(deleteProduct);
-        if (!deleteProduct) {
-            return NextResponse.json({ msg: "DB Error" });
+        if (!deleteProduct.deletedCount) {
+            return NextResponse.json({ msg: "DB Error: Product not found" });
         }
 
         return NextResponse.json({ msg: "Deleted Successfully" });
@@ -20,7 +17,7 @@ export async function DELETE(request, { params }) {
         return NextResponse.json(
             {
                 msg: "Something went wrong",
-                error,
+                error: error.message,
             },
             { status: 400 }
         );

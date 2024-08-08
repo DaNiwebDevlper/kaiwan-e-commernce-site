@@ -9,17 +9,25 @@ export async function PUT(request, { params }) {
         const { name: productName, category: productCategory, price: productPrice, quantity: productQuantity } = body;
 
         await connectDB();
-        const data = await ProductModel.findByIdAndUpdate(id, {
-            productName,
-            productCategory,
-            productPrice, productQuantity
-        }, { new: true });
+        const data = await ProductModel.findByIdAndUpdate(
+            id,
+            {
+                productName,
+                productCategory,
+                productPrice,
+                productQuantity,
+            },
+            { new: true }
+        );
 
         return NextResponse.json({ msg: "Updated Successfully", data });
     } catch (error) {
-        return NextResponse.json({
-            msg: "Something went wrong",
-            error
-        }, { status: 400 });
+        return NextResponse.json(
+            {
+                msg: "Something went wrong",
+                error: error.message,
+            },
+            { status: 400 }
+        );
     }
 }
