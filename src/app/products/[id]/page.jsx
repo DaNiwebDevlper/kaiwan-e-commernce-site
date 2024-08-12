@@ -35,7 +35,7 @@ const ProductDetail = () => {
 
                             {/* ////--Product Image */}
                             <div className="sm:w-[400px] sm:h-[400px] overflow-hidden  rounded-2xl">
-                                <Image src={`/${product.productImage}`} alt="product img" width={400} height={400} className="hover:scale-150 transition-all object-cover" />
+                                <img src={`${product.productImage}`} alt="product img" width={400} height={400} className="hover:scale-150 transition-all object-cover" />
                             </div>
 
                             {/* /////--Product Details */}

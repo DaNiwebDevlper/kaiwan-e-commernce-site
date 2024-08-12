@@ -1,4 +1,5 @@
 "use client";
+
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { setLoading } from "@/redux/slice/loadingSlice";
 import { makeToast } from "@/utils/Helper";
@@ -15,7 +16,7 @@ const AddProduct = () => {
     const [data, setData] = useState({
         productName: "",
         productPrice: "",
-        productDiscountPrice: "", // Add discount price here
+        productDiscountPrice: "",
         productQuantity: "",
         productCategory: "Sunblock",
         productDetail: "",
@@ -40,7 +41,7 @@ const AddProduct = () => {
         const formdata = new FormData();
         formdata.append('name', data.productName);
         formdata.append('price', data.productPrice);
-        formdata.append('productDiscountPrice', data.productDiscountPrice); // Add discount price to form data
+        formdata.append('productDiscountPrice', data.productDiscountPrice);
         formdata.append('category', data.productCategory);
         formdata.append('detail', data.productDetail);
         formdata.append('quantity', data.productQuantity);
@@ -48,7 +49,11 @@ const AddProduct = () => {
         formdata.append('image', showImg);
 
         try {
-            const response = await axios.post("/api/add_product", formdata);
+            const response = await axios.post("/api/add_product", formdata, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
 
             if (response.data.success) {
                 makeToast("Product Added Successfully");
@@ -56,7 +61,7 @@ const AddProduct = () => {
                 setData({
                     productName: "",
                     productPrice: "",
-                    productDiscountPrice: "", // Reset discount price
+                    productDiscountPrice: "",
                     productQuantity: "",
                     productCategory: "Sunblock",
                     productDetail: "",
@@ -73,7 +78,6 @@ const AddProduct = () => {
 
     return (
         <form onSubmit={onSubmitHandler} className='p-5'>
-
             <p className='text-xl font-semibold font-mono'>Upload Thumbnail</p>
             <label htmlFor='image'>
                 <Image

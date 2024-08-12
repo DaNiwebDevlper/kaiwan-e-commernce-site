@@ -43,7 +43,7 @@ const ProductRow = ({ srNo, setUpdateTable, setOpenPopup, product }) => {
                 <p>RS {product.productPrice}</p>
             </td>
             <td className="py-2">
-                <Image src={`/${product.productImage}`} alt="product_img" width={50} height={50} className="w-[40px]" />
+                <img src={`${product.productImage}`} alt="product_img" className="size-[40px]" />
             </td>
             <td>
                 <p className="flex items-center text-xl sm:gap-2 gap-1">

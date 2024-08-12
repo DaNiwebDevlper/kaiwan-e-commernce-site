@@ -16,7 +16,7 @@ const Products = () => {
 
     useEffect(() => {
         dispatch(setLoading(true));
-        axios.get("/api/products")
+        axios.get("/api/get_products")
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));

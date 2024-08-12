@@ -11,7 +11,7 @@ const ProductCard = ({ id, title, imgSrc, price, quantity }) => {
         <div className={`sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3`}>
             <div className="overflow-hidden">
                 <Link href={`/products/${id}`}>
-                    <Image src={`/${imgSrc}`} alt='card img' width={300} height={200} className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
+                    <img src={`${imgSrc}`} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
                 </Link>
             </div>
             <div className="flex justify-between px-1 items-center">

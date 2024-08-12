@@ -16,7 +16,7 @@ const FeaturedProducts = () => {
 
     useEffect(() => {
         dispatch(setLoading(true));
-        axios.get("/api/products")
+        axios.get("/api/get_products")
             .then((res) => setProducts(res.data.filter(product => product.featured)))
             .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));
@@ -30,7 +30,7 @@ const FeaturedProducts = () => {
                     <div className="sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3" key={i} >
                         <div className="overflow-hidden">
                             <Link href={`/products/${data._id}`}>
-                                <Image src={`/${data.productImage}`} alt='card img' width={300} height={200} className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' />
+                                <img src={`${data.productImage}`} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' />
                             </Link>
                         </div>
                         <div className="flex justify-between px-1 items-center">

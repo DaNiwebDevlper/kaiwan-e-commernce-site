@@ -17,6 +17,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }) => {
         category: productData.productCategory,
         price: productData.productPrice,
         quantity: productData.productQuantity,
+        discount: productData.productDiscountPrice
     });
 
     const handleSubmit = async (e) => {
@@ -49,13 +50,24 @@ const Popup = ({ setOpenPopup, setUpdateTable }) => {
                             className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-lg w-full"
                         />
                     </label>
-                    <input
-                        placeholder="Enter the Price..."
-                        type="number"
-                        onChange={(e) => setInputData({ ...inputData, price: e.target.value })}
-                        value={inputData.price}
-                        className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-lg w-full"
-                    />
+                    <div className="flex justify-between gap-x-4">
+                        <input
+                            placeholder="Enter the Price..."
+                            type="number"
+                            onChange={(e) => setInputData({ ...inputData, price: e.target.value })}
+                            value={inputData.price}
+                            className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-lg w-full"
+                        />
+
+                        <input
+                            placeholder="Enter the discount..."
+                            type="number"
+                            onChange={(e) => setInputData({ ...inputData, discount: e.target.value })}
+                            value={inputData.discount}
+                            className="px-4 py-2 border border-gray-400 bg-slate-100 outline-none rounded-lg w-full"
+                        />
+
+                    </div>
                     <div className="flex justify-between gap-x-4">
                         <select
                             name="productCategory"
