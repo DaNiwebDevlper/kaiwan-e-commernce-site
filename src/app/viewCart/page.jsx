@@ -49,10 +49,19 @@ const ViewCartPage = () => {
     const handleRemove = item => {
         dispatch(removeFromCart(item.id))
     }
-
     const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0)
     const totalCost = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
+
+    /// delivery charges
+    let deliveryFees = ""
+    if (totalCost > 1850) {
+        deliveryFees = "free"
+
+    } else {
+        deliveryFees = 150
+
+    }
     return (
         <div className='sm:p-5'>
             <div className="flex flex-col sm:flex-row gap-y-2  sm:justify-between p-5 border-b sm:items-center">
@@ -107,10 +116,10 @@ const ViewCartPage = () => {
                         SubTotal: <span className='font-normal text-lg text-black dark:text-white'>{totalCost}</span>
                     </p>
                     <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
-                        Delivery fees: <span className='font-normal text-lg text-black dark:text-white'>150</span>
+                        Delivery Charges: <span className='font-normal text-lg text-black dark:text-white'>{deliveryFees}</span>
                     </p>
                     <p className='border-t pt-2 text-md font-semibold dark:text-slate-400 text-slate-700'>
-                        Total Cost: <span className='font-normal text-lg text-green-500'>{totalCost + 150}</span>
+                        Total Cost: <span className='font-normal text-lg text-green-500'>{deliveryFees === 150 ? totalCost + 150 : totalCost + 0}</span>
                     </p>
                     <button className='flex gap-2 items-center px-4 py-2 w-full bg-black/80 active:scale-90 transition-all rounded-md dark:bg-rose-700 text-white  justify-center' onClick={handleCheckout}>Checkout <MdShoppingCartCheckout size={20} /></button>
                 </div>

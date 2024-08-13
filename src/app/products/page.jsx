@@ -46,14 +46,17 @@ const Products = () => {
                 ))}
             </div>
             <div className=" my-9 flex flex-col items-center justify-center">
-                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
-                    {filteredProducts.length > 0 ? (
-                        filteredProducts.map((data) => (
-                            <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} width='w-[80%]' />
-                        ))
-                    ) : (<Image src="/assets/empty.svg" loading='lazy' alt='no result' width={700} height={700} className='sm:ml-[500px] ml-12' />
-                    )}
-                </div>
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map((data) => (
+                        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
+                            <ProductCard key={data._id} title={data.productName} price={data.productPrice} imgSrc={data.productImage} id={data._id} quantity={data.productQuantity} discount={data.productDiscountPrice} width='w-[80%]' /></div>
+
+                    ))
+                ) : <div className="flex justify-center items-center min-h-[60vh] w-full">
+                    <Image src="/assets/empty.svg" loading='lazy' alt='no result' width={500} height={500} className='' />
+
+                </div>}
+
             </div>
         </div>
     );

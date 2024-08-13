@@ -33,9 +33,17 @@ const FeaturedProducts = () => {
                                 <img src={`${data.productImage}`} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' />
                             </Link>
                         </div>
-                        <div className="flex justify-between px-1 items-center">
-                            <h1 className='sm:text-[14px] text-[10px] font-semibold font-sarif'>{data.productName}</h1>
-                            <p className='flex items-center text-[10px] sm:text-lg'> <span>{data.productQuantity == 0 ? '' : <span className='text-sm'>Rs : </span>}</span> {data.productQuantity == 0 ? <span className='text-rose-500'>Sold out</span> : data.productPrice}</p>
+                        <div className="flex flex-col justify-center gap-y-2 px-1 items-center">
+                            <h1 className='sm:text-[18px] text-[13px] font-semibold font-sarif'>{data.productName}</h1>
+
+                            <div className="flex justify-center items-center gap-x-2">
+                                <p className='flex items-center gap-x-2'>
+                                    {data.productQuantity == 0 ? '' : <p className='text-[14px] sm:text-lg line-through text-gray-500'>Rs:{data.productDiscountPrice}</p>}
+                                </p>
+
+                                <p className='flex items-center text-[10px] sm:text-lg'> <span>{data.productQuantity == 0 ? '' : <p className=''> </p>}</span> {data.productQuantity == 0 ? <p className='text-rose-500'>Sold out</p> : data.productPrice}</p>
+                            </div>
+
                         </div>
 
                         <div className="flex justify-between items-center">

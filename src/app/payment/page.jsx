@@ -21,10 +21,11 @@ const Payment = () => {
                 ) : (
                     <div>
                         <p className='text-lg font-semibold mb-2'>Please transfer the amount to the following bank account:</p>
-                        <p>MUHAMMAD ASIF SHAHZAD</p>
-                        <p>Meezan Bank- Mianwali Branch</p>
-                        <p><b>Account Number:</b> 80010104939803</p>
-                        <p><b>IBAN:</b> PK21MEZN0080010104939803</p>
+                        <p>KAIWAN</p>
+                        <p>Bank Alfalah- Mianwali Branch</p>
+                        <p><b>Account Number:</b>01721008945121</p>
+                        <p><b>IBAN:</b> PK46ALFH0172001008945121</p>
+                        <p><b>Branch Code:</b> 0172</p>
                         <div className='border border-rose-500 p-3 my-5'>
                             <p className='text-xl font-semibold text-rose-500 mb-2'>
                                 Note:
