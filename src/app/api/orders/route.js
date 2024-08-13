@@ -2,7 +2,7 @@ import orderModel from '../../../../libs/models/orderModel';
 import { connectDB } from '../../../../libs/config/db';
 import { sendDetailToGmail } from '@/utils/sendEmail';
 import { NextResponse } from 'next/server';
-
+export const dynamic = 'force-dynamic';
 export async function POST(req) {
     await connectDB();
 

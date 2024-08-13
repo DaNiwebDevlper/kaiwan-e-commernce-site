@@ -1,7 +1,6 @@
 "use client"
 import CheckoutForm from '@/components/redux/CheckoutForm'
 import { useAppSelector } from '@/redux/hooks/hooks'
-import Image from 'next/image'
 import React from 'react'
 
 const CheckoutPage = () => {

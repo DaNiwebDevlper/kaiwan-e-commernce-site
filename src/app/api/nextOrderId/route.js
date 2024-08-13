@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "../../../../libs/config/db";
-
+export const dynamic = 'force-dynamic';
 export async function GET() {
     try {
         const db = await connectDB();

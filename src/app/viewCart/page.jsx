@@ -70,7 +70,7 @@ const ViewCartPage = () => {
                                             <MdCancel className='text-xl text-red-500 absolute top-3 right-3' onClick={() => handleRemove(cartData)} />
                                         </button>
                                         <div className="">
-                                            <Image src={`/${cartData.imgSrc}`} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px]' />
+                                            <img src={`${cartData.imgSrc}`} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px]' />
                                         </div>
 
 
