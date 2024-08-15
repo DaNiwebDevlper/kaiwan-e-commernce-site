@@ -48,12 +48,12 @@ const Navbar = () => {
     ];
 
     return (
-        <>
+        <main>
             <div className="w-full h-8 bg-rose-600 text-white sm:text-lg text-[10px] font-mono flex justify-center items-center gap-2">
                 <p>Now Cash on delivery available. All Over Pakistan</p>
                 <TbTruckDelivery className="text-2xl text-yellow-400" />
             </div>
-            <div className="w-full backdrop-blur-sm sticky z-50 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
+            <nav className="w-full backdrop-blur-sm sticky z-50 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
 
                 {/* ////--Logo image */}
                 <Link href="/">
@@ -152,8 +152,8 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-            </div >
-        </>
+            </nav >
+        </main>
     );
 };
 

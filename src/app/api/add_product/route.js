@@ -2,7 +2,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "../../../../libs/config/db";
 import ProductModel from "../../../../libs/models/ProductModel";
-import { writeFile } from 'fs/promises';
 import { Buffer } from 'buffer';
 import { errorToast } from "@/utils/Helper";
 import { uploadImageToCloudinary } from "@/utils/Cloudniary";
@@ -14,7 +13,6 @@ export async function POST(req) {
 
     try {
         const formData = await req.formData();
-        const timeStamp = Date.now();
 
         // Image handling
         const image = formData.get('image');
@@ -37,7 +35,8 @@ export async function POST(req) {
             productImage: uploadCloudinary.secure_url,
             productPrice: formData.get('price'),
             featured: formData.get('featured') === 'true',
-            productDiscountPrice: formData.get('productDiscountPrice')
+            productDiscountPrice: formData.get('productDiscountPrice'),
+            sale: formData.get('sale')
         };
 
         await ProductModel.create(productData);

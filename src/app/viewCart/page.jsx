@@ -55,8 +55,8 @@ const ViewCartPage = () => {
 
     /// delivery charges
     let deliveryFees = ""
-    if (totalCost > 1850) {
-        deliveryFees = "free"
+    if (totalCost >= 2000) {
+        deliveryFees = "Free"
 
     } else {
         deliveryFees = 150
@@ -79,7 +79,7 @@ const ViewCartPage = () => {
                                             <MdCancel className='text-xl text-red-500 absolute top-3 right-3' onClick={() => handleRemove(cartData)} />
                                         </button>
                                         <div className="">
-                                            <img src={`${cartData.imgSrc}`} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px]' />
+                                            <Image src={cartData.imgSrc} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px]' />
                                         </div>
 
 
@@ -116,7 +116,7 @@ const ViewCartPage = () => {
                         SubTotal: <span className='font-normal text-lg text-black dark:text-white'>{totalCost}</span>
                     </p>
                     <p className='text-md font-semibold dark:text-slate-400 text-slate-700'>
-                        Delivery Charges: <span className='font-normal text-lg text-black dark:text-white'>{deliveryFees}</span>
+                        Delivery Charges: <span className='text-lg text-black dark:text-white'>{deliveryFees}</span>
                     </p>
                     <p className='border-t pt-2 text-md font-semibold dark:text-slate-400 text-slate-700'>
                         Total Cost: <span className='font-normal text-lg text-green-500'>{deliveryFees === 150 ? totalCost + 150 : totalCost + 0}</span>

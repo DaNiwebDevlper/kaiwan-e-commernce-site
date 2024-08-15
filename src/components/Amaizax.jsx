@@ -15,7 +15,7 @@ const Amaizax = () => {
                         </div>
                         <div className="w-[80%]">
                             <p className="sm:text-xl text-black text-md font-bold font-mono">Hair Growth</p>
-                            <p className="sm:text-sm text-[12px] text-rose-600">Formulated with Biotin Promoto Hair Growth in a week</p>
+                            <p className="sm:text-sm text-[12px] text-rose-600">Formulated with Biotin Promote Hair Growth in a week</p>
                         </div>
                     </div>
 
@@ -25,7 +25,7 @@ const Amaizax = () => {
                         </div>
                         <div className="w-[80%]">
                             <p className="sm:text-xl text-black text-md font-bold font-mono">Repair</p>
-                            <p className="sm:text-sm text-[12px] text-rose-600">Improve Hair Thininig and repair demanged hair</p>
+                            <p className="sm:text-sm text-[12px] text-rose-600">Improve Hair Thininig and Repair Damaged Hair</p>
                         </div>
                     </div>
 

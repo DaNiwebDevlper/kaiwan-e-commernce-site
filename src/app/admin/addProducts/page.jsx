@@ -6,6 +6,10 @@ import { makeToast } from "@/utils/Helper";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
+import dynamic from "next/dynamic";
+import 'react-quill/dist/quill.snow.css';
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const CategoryOptions = [
     'Whitening', 'Hair Care', 'Sunblock', 'Acne', 'Moisturizer', 'All'
@@ -20,7 +24,8 @@ const AddProduct = () => {
         productQuantity: "",
         productCategory: "Sunblock",
         productDetail: "",
-        featured: false
+        featured: false,
+        sale: ""
     });
 
     const dispatch = useAppDispatch();
@@ -29,6 +34,10 @@ const AddProduct = () => {
         const name = event.target.name;
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setData(data => ({ ...data, [name]: value }));
+    };
+
+    const onDescriptionChange = (value) => {
+        setData(data => ({ ...data, productDetail: value }));
     };
 
     const onImageChange = (event) => {
@@ -47,6 +56,7 @@ const AddProduct = () => {
         formdata.append('quantity', data.productQuantity);
         formdata.append('featured', data.featured ? 'true' : 'false');
         formdata.append('image', showImg);
+        formdata.append('sale', data.sale);
 
         try {
             const response = await axios.post("/api/add_product", formdata, {
@@ -65,7 +75,8 @@ const AddProduct = () => {
                     productQuantity: "",
                     productCategory: "Sunblock",
                     productDetail: "",
-                    featured: false
+                    featured: false,
+                    sale: ""
                 });
             }
         } catch (error) {
@@ -78,6 +89,7 @@ const AddProduct = () => {
 
     return (
         <form onSubmit={onSubmitHandler} className='p-5'>
+            {/* Image Upload */}
             <p className='text-xl font-semibold font-mono'>Upload Thumbnail</p>
             <label htmlFor='image'>
                 <Image
@@ -91,26 +103,41 @@ const AddProduct = () => {
             </label>
             <input onChange={onImageChange} type='file' required hidden name='image' id='image' className='w-fit' />
 
+            {/* Product Name */}
             <p className='text-black/80 dark:text-white/80 pl-2'>Product Name: </p>
             <input type='text' name='productName' onChange={onChangeHandler} value={data.productName} placeholder='Enter the product name...' required className='text-sm sm:w-[60%] w-full border rounded-lg py-2 px-4 my-2' />
 
+            {/* Product Description */}
             <p className='text-black/80 dark:text-white/80 pl-2'>Description: </p>
-            <textarea placeholder='Product description...' rows={10} className='border rounded-xl px-5 py-2 md:w-[60%] w-full my-2' name='productDetail' onChange={onChangeHandler} value={data.productDetail}></textarea>
+            <ReactQuill
+                value={data.productDetail}
+                onChange={onDescriptionChange}
+                className='border rounded-xl px-5 py-2 md:w-[60%] w-full my-2'
+            />
+
+            {/* Product Sale */}
+            <p className='text-black/80 dark:text-white/80 pl-2'>Product Sale: </p>
+            <input type='text' name='sale' onChange={onChangeHandler} value={data.sale} placeholder='Enter the product sale...' className='text-sm sm:w-[60%] w-full border rounded-lg py-2 px-4 my-2' />
             <br />
 
+            {/* Other Inputs */}
             <div className="flex justify-between flex-wrap items-center w-full sm:w-[60%]">
+                {/* Price */}
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Price: </p>
                     <input type='number' name='productPrice' onChange={onChangeHandler} value={data.productPrice} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
+                {/* Discount Price */}
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Discount Price: </p>
                     <input type='number' name='productDiscountPrice' onChange={onChangeHandler} value={data.productDiscountPrice} className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
+                {/* Quantity */}
                 <div className="">
                     <p className='text-black/80 dark:text-white/80 pl-2'>Quantity: </p>
                     <input type='number' name='productQuantity' onChange={onChangeHandler} value={data.productQuantity} required className='text-sm w-[100px] border rounded-lg py-2 px-4 my-2' />
                 </div>
+                {/* Category */}
                 <div className="">
                     <p className="text-black/80 dark:text-white/80 pl-2 ">Category:</p>
                     <select name='productCategory' onChange={onChangeHandler} value={data.productCategory} className='w-fit h-fit rounded-lg px-4 text-sm py-2 border my-2'>
@@ -122,11 +149,14 @@ const AddProduct = () => {
                     </select>
                 </div>
 
+                {/* Featured */}
                 <label className="flex items-center px-4 py-[6px] my-2 dark:bg-black bg-white mt-6 border rounded-lg">
                     <input type="checkbox" name="featured" checked={data.featured} onChange={onChangeHandler} />
                     <span className="ml-2">Featured</span>
                 </label>
             </div>
+
+            {/* Submit Button */}
             <div className="sm:w-[60%]">
                 <button type='submit' className='py-2  rounded-lg bg-black dark:bg-rose-700 dark:hover:bg-red-900 transition-all text-white active:scale-90 w-full my-4'>ADD</button>
             </div>

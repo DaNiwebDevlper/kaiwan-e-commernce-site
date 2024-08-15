@@ -21,7 +21,7 @@ const Payment = () => {
                 ) : (
                     <div>
                         <p className='text-lg font-semibold mb-2'>Please transfer the amount to the following bank account:</p>
-                        <p>KAIWAN</p>
+                        <p><b>Acc Title:</b>KAIWAN</p>
                         <p>Bank Alfalah- Mianwali Branch</p>
                         <p><b>Account Number:</b>01721008945121</p>
                         <p><b>IBAN:</b> PK46ALFH0172001008945121</p>

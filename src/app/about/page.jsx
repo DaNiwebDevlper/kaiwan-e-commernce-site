@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
-
+export const metadata = {
+    title: "About"
+}
 const About = () => {
     return (
         <div className='min-h-screen p-5'>

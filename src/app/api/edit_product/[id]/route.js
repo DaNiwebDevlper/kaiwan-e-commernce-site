@@ -6,7 +6,7 @@ export async function PUT(request, { params }) {
     try {
         const body = await request.json();
         const id = params.id;
-        const { name: productName, category: productCategory, price: productPrice, quantity: productQuantity, discount: productDiscountPrice } = body;
+        const { name: productName, category: productCategory, price: productPrice, quantity: productQuantity, discount: productDiscountPrice, sale: sale } = body;
 
         await connectDB();
         const data = await ProductModel.findByIdAndUpdate(
@@ -15,7 +15,7 @@ export async function PUT(request, { params }) {
                 productName,
                 productCategory,
                 productPrice,
-                productQuantity, productDiscountPrice
+                productQuantity, productDiscountPrice, sale
             },
             { new: true }
         );

@@ -1,27 +1,27 @@
 "use client"
-import Image from 'next/image'
 import Link from 'next/link'
-import { LuDollarSign } from 'react-icons/lu'
 import { useAppDispatch } from '@/redux/hooks/hooks'
 import { addToCart } from '@/redux/slice/CartSlice'
+import Image from 'next/image'
 
-const ProductCard = ({ id, title, imgSrc, price, quantity, discount }) => {
+const ProductCard = ({ id, title, imgSrc, price, quantity, discount, sale }) => {
     const dispatch = useAppDispatch()
     return (
-        <div className={`sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3`}>
+        <main className={`sm:w-[250px] w-[92%] h-fit shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3`}>
             <div className="overflow-hidden">
-                <Link href={`/products/${id}`}>
-                    <img src={`${imgSrc}`} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
+                <Link href={`/products/${id}`} className='relative'>
+                    <Image src={imgSrc} width={200} height={150} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
+                    {!sale ? "" : <div className="w-fit bg-rose-500 text-white font-semibold font-mono py-1 px-3 rounded-lg absolute top-2 right-2 text-sm">{sale}</div>}
                 </Link>
             </div>
             <div className="flex flex-col justify-center items-center gap-y-2 px-1">
                 <h1 className='sm:text-[18px] text-[12px] font-semibold font-sarif'>{title}</h1>
                 <div className="flex justify-center items-center gap-x-2">
                     <p className='flex items-center gap-x-2'>
-                        {quantity == 0 ? '' : <p className='text-[10px] sm:text-lg line-through text-gray-500'>Rs:{discount}</p>}
+                        {quantity == 0 ? '' : <span className='text-[10px] sm:text-lg line-through text-gray-500'>{!discount ? "" : "Rs"} {discount}</span>}
                     </p>
 
-                    <p className='flex items-center text-[10px] sm:text-lg'> <span>{quantity == 0 ? '' : <p className=''> </p>}</span> {quantity == 0 ? <p className='text-rose-500'>Sold out</p> : price}</p>
+                    <p className='flex items-center gap-x-1 text-[10px] sm:text-lg'> <span>{quantity == 0 ? '' : <span className=''>Rs{' '}</span>}</span> {quantity == 0 ? <span className='text-rose-500'>Sold out</span> : price}</p>
                 </div>
             </div>
 
@@ -33,7 +33,7 @@ const ProductCard = ({ id, title, imgSrc, price, quantity, discount }) => {
                 }
             </Link>
 
-        </div>
+        </main>
     )
 }
 

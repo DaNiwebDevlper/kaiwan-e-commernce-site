@@ -1,4 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
+/* global.css */
+.product-description h1 {
+    @apply text-3xl font-bold mt-4 mb-2;
+}
+.product-description ul {
+    @apply list-disc list-inside ml-5;
+}
+.product-description li {
+    @apply text-base mb-1;
+}

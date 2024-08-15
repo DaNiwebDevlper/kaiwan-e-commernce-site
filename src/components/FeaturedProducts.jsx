@@ -27,21 +27,24 @@ const FeaturedProducts = () => {
             {loading && <Loader />}
             <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
                 {products.map((data, i) => (
-                    <div className="sm:w-[250px] w-[92%]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3" key={i} >
+                    <div className="sm:w-[250px] w-[92%] h-fit  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3" key={i} >
                         <div className="overflow-hidden">
-                            <Link href={`/products/${data._id}`}>
-                                <img src={`${data.productImage}`} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' />
+                            {/* product image */}
+                            <Link href={`/products/${data.id}`} className='relative'>
+                                <Image src={data.productImage} width={200} height={150} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
+                                {!data.sale ? "" : <div className="w-fit bg-rose-500 text-white font-semibold font-mono py-1 px-3 rounded-lg absolute top-2 right-2 text-sm">{data.sale}</div>}
                             </Link>
                         </div>
                         <div className="flex flex-col justify-center gap-y-2 px-1 items-center">
+                            {/* prodcut name */}
                             <h1 className='sm:text-[18px] text-[13px] font-semibold font-sarif'>{data.productName}</h1>
 
                             <div className="flex justify-center items-center gap-x-2">
                                 <p className='flex items-center gap-x-2'>
-                                    {data.productQuantity == 0 ? '' : <p className='text-[14px] sm:text-lg line-through text-gray-500'>Rs:{data.productDiscountPrice}</p>}
+                                    {data.productQuantity == 0 ? '' : <span className='text-[14px] sm:text-lg line-through text-gray-500'>Rs {data.productDiscountPrice}</span>}
                                 </p>
 
-                                <p className='flex items-center text-[10px] sm:text-lg'> <span>{data.productQuantity == 0 ? '' : <p className=''> </p>}</span> {data.productQuantity == 0 ? <p className='text-rose-500'>Sold out</p> : data.productPrice}</p>
+                                <p className='flex items-center gap-x-1  text-[10px] sm:text-lg'> <span>{data.productQuantity == 0 ? '' : <span className=''>Rs </span>}</span> {data.productQuantity == 0 ? <span className='text-rose-500'>Sold out</span> : data.productPrice}</p>
                             </div>
 
                         </div>

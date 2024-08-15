@@ -1,9 +1,43 @@
+"use client"
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie'
+import { errorToast, makeToast } from '@/utils/Helper';
 
-const LoginForm = ({ submitForm }) => {
+const LoginForm = () => {
+    const router = useRouter()
+
+    const formHandler = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const email = formData.get('email')
+        const password = formData.get('password')
+
+        const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        })
+
+        const result = await res.json()
+        if (result.token) {
+            Cookies.set('token', result.token, { expires: 14 }) // Save token for 2 weeks
+            Cookies.set('user', JSON.stringify(result.user), { expires: 14 }) // Save user info
+            makeToast(result.msg)
+            if (result.user.email === "kaiwanpharma@gmail.com") {
+                router.push('/admin/dashboard')
+            } else {
+                router.push('/')
+            }
+        } else {
+            errorToast(result.msg)
+        }
+    }
+
     return (
-        <form className="sm:w-[350px] w-[300px] dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 border" onSubmit={submitForm}>
+        <form className="sm:w-[350px] w-[300px] dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 border" onSubmit={formHandler}>
             <p className='font-madimi text-2xl font-semibold my-5 text-center'>Login Form</p>
 
             <div className="mb-4">

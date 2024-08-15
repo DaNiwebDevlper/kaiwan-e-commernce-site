@@ -14,8 +14,6 @@ export default function Home() {
       <BeforeAfter />
       <Snnopro />
       <TestimonialSlider testimonials={user_review_data} />
-
-
     </>
   );
 }

@@ -13,6 +13,8 @@ const Page = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const [products, setProducts] = useState([]);
+    const [saleProducts, setSaleProducts] = useState([]);
+    const [nonSaleProducts, setNonSaleProducts] = useState([]);
     const [openPopup, setOpenPopup] = useState(false);
     const [updateTable, setUpdateTable] = useState(false);
 
@@ -31,7 +33,17 @@ const Page = () => {
         dispatch(setLoading(true));
         axios
             .get("/api/get_products")
-            .then((res) => setProducts(res.data))
+            .then((res) => {
+                const allProducts = res.data;
+                setProducts(allProducts);
+
+                // Separate products into on-sale and non-sale
+                const saleItems = allProducts.filter(product => product.sale); // Assuming 'onSale' is the property
+                const nonSaleItems = allProducts.filter(product => !product.sale);
+
+                setSaleProducts(saleItems);
+                setNonSaleProducts(nonSaleItems);
+            })
             .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));
     }, [updateTable, dispatch]);
@@ -40,6 +52,8 @@ const Page = () => {
         <div className="sm:p-4 p-1">
             <div className="dark:bg-black bg-white rounded-xl min-h-screen">
                 <h1 className="sm:text-3xl text-2xl font-semibold font-madimi p-5">All Products</h1>
+
+                <h2 className="text-2xl font-semibold p-5">On Sale</h2>
                 <div className="w-full overflow-y-auto">
                     <table className="w-full overflow-y-auto">
                         <thead>
@@ -52,7 +66,33 @@ const Page = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map((product, index) => (
+                            {saleProducts.map((product, index) => (
+                                <ProductRow
+                                    key={product._id}
+                                    srNo={index + 1}
+                                    setOpenPopup={setOpenPopup}
+                                    setUpdateTable={setUpdateTable}
+                                    product={product}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 className="text-2xl font-semibold p-5">Regular Products</h2>
+                <div className="w-full overflow-y-auto">
+                    <table className="w-full overflow-y-auto">
+                        <thead>
+                            <tr className="font-thin py-3 text-black/60 dark:text-white/70 border-b text-left p-2">
+                                <th className="hidden sm:block">Sr.no</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Picture</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {nonSaleProducts.map((product, index) => (
                                 <ProductRow
                                     key={product._id}
                                     srNo={index + 1}

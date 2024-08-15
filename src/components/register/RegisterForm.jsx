@@ -1,9 +1,31 @@
+"use client"
+import { makeToast } from '@/utils/Helper'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 
-const RegisterForm = ({ submitForm }) => {
+const RegisterForm = () => {
+    const router = useRouter()
+
+    const formHandler = async (e) => {
+        e.preventDefault()
+        const values = e.currentTarget
+        const { name, email, password } = Object.fromEntries(new FormData(values))
+
+        const res = await fetch("/api/register", {
+            method: "POST",
+            body: JSON.stringify({ name, email, password })
+        })
+        const result = await res.json()
+        if (!result.success) {
+            return makeToast(result.msg)
+        }
+        makeToast(result.msg)
+        router.push("/login")
+
+    }
     return (
-        <form className="sm:w-[350px] w-[300px] border my-5 dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 " onSubmit={submitForm}>
+        <form className="sm:w-[350px] w-[300px] border my-5 dark:bg-black bg-slate-50 border-white/20 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 " onSubmit={formHandler}>
             <p className='font-madimi text-2xl font-semibold my-5 text-center'>Registration Form</p>
             <div className="mb-4">
                 <label className="block text-gray-700 dark:text-gray-500 text-sm font-bold mb-2" >
