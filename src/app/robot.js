@@ -1,10 +1,14 @@
-export default function robots() {
+
+export function robots() {
+    const baseUrl = "https://kaiwanpharma.com"
+
+
     return {
         rules: {
             userAgent: "*",
             allow: ["/", "/products"],
             disallow: []
         },
-        sitemap: "https://kaiwanpharma.com/sitemap.xml" || "http://localhost:3000/sitemap.xml"
-    }
+        sitemap: `${baseUrl}/sitemap.xml`
+    };
 }

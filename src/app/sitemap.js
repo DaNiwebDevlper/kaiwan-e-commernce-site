@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export default async function sitemap() {
-    const baseUrl = "https://kaiwanpharma.com" || "http://localhost:3000";
+    const baseUrl = "https://kaiwanpharma.com"
+
 
     // Fetch product data
     const response = await axios.get(`${baseUrl}/api/products`)
@@ -25,7 +26,6 @@ export default async function sitemap() {
             url: `${baseUrl}`,
             lastModified: new Date(),
         },
-
         {
             url: `${baseUrl}/products`,
             lastModified: new Date()
@@ -34,3 +34,4 @@ export default async function sitemap() {
 
     return [...staticPages, ...productPosts];
 }
+
