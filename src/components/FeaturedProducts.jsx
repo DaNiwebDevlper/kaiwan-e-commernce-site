@@ -48,14 +48,16 @@ const FeaturedProducts = () => {
                             </div>
 
                         </div>
+                        <Link href="/viewCart">
+                            <div className="flex justify-between items-center">
+                                {data.productQuantity == 0 ? <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white cursor-not-allowed border dark:bg-transparent border-white/30' disabled>Sold out</button> :
 
-                        <div className="flex justify-between items-center">
-                            {data.productQuantity == 0 ? <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white cursor-not-allowed border dark:bg-transparent border-white/30' disabled>Sold out</button> :
+                                    <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id: data._id, imgSrc: data.productImage, title: data.productName, price: data.productPrice, quantity: data.productQuantity }))}>Add to Cart</button>
 
-                                <button className='px-4 py-2 w-full sm:text-sm text-[10px] rounded-md bg-black/80 hover:bg-[#222] transition-all text-white border dark:bg-transparent border-white/30' onClick={() => dispatch(addToCart({ id: data._id, imgSrc: data.productImage, title: data.productName, price: data.productPrice, quantity: data.productQuantity }))}>Add to Cart</button>
+                                }
+                            </div>
+                        </Link>
 
-                            }
-                        </div>
                     </div>
                 ))}
             </div>

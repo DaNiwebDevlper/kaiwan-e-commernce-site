@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeSwitcher from "./darkMode/ThemeSwitcher";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { SlHandbag } from "react-icons/sl";
 import { IoPersonCircleSharp } from "react-icons/io5";
+
 const Navbar = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
@@ -18,21 +19,15 @@ const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const router = useRouter();
 
-    const cartItems = useAppSelector(state => state.cart.cart)
+    const cartItems = useAppSelector(state => state.cart.cart);
 
-    /// handle user login data
-    useLayoutEffect(() => {
+    useEffect(() => {
         const userCookie = Cookies.get('user');
         if (userCookie) {
             setUser(JSON.parse(userCookie));
-
         }
-    }, [])
+    }, []);
 
-
-
-
-    /// add logoout feature
     const handleLogout = () => {
         Cookies.remove('token');
         Cookies.remove('user');
@@ -48,19 +43,17 @@ const Navbar = () => {
     ];
 
     return (
-        <main>
+        <>
             <div className="w-full h-8 bg-rose-600 text-white sm:text-lg text-[10px] font-mono flex justify-center items-center gap-2">
                 <p>Now Cash on delivery available. All Over Pakistan</p>
                 <TbTruckDelivery className="text-2xl text-yellow-400" />
             </div>
-            <nav className="w-full backdrop-blur-sm sticky z-50 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
+            <div className="w-full backdrop-blur-sm sticky z-50 top-0 flex sm:justify-around justify-between sm:px-0 items-center min-h-[68px] dark:bg-black/20 bg-white/40">
 
-                {/* ////--Logo image */}
                 <Link href="/">
                     <Image src="/assets/logo.png" alt="logo" height={50} width={50} className="hidden sm:block w-[60px] text-white py-0 my-0" />
                 </Link>
 
-                {/* /////////////////---NavLinks for desktop---////////////////// */}
                 <ul className="hidden sm:flex dark:text-white">
                     {links.map((link) => {
                         const isActive = pathname.endsWith(link.href);
@@ -77,7 +70,6 @@ const Navbar = () => {
                     })}
                 </ul>
 
-                {/* ///////////////---NavLinks for Mobile---///////////////////// */}
                 <div onClick={() => setNav(!nav)} className="cursor-pointer pr-[130px] z-40 text-gray-500 sm:hidden">
                     {nav ? <FaTimes size={25} className="text-rose-500" /> : <FaBars className="text-rose-500" size={25} />}
                 </div>
@@ -102,43 +94,37 @@ const Navbar = () => {
                     </ul>
                 )}
 
-                {/* ////---Add to cart button and darkMode/LightMode button */}
-
                 <div className="flex gap-4 items-center mr-5">
                     <div className="flex">
                         <Link href="/viewCart">
                             <button className="text-2xl items-center">
-
                                 <SlHandbag />
                             </button>
                         </Link>
-                        <small className={`text-rose-500 pt-1 ${cartItems.length < 1 ? 'hidden' : 'block'}`} >({cartItems.length})</small>
+                        {cartItems.length > 0 && <small className="text-rose-500 pt-1">({cartItems.length})</small>}
                     </div>
                     <ThemeSwitcher />
 
-                    {/* /// if the user not login then shows these buttons */}
                     {!user ? (
-                        <div className="flex items-center ">
+                        <div className="flex items-center">
                             <Link href="/login">
-                                <button className="text-md font-semibold font-madimi px-3 py-1   sm:border-r border-black/40 dark:border-white/50  active:scale-90  cursor-pointer ">Login</button>
+                                <button className="text-md font-semibold font-madimi px-3 py-1 sm:border-r border-black/40 dark:border-white/50 active:scale-90 cursor-pointer">Login</button>
                             </Link>
                             <Link href="/register">
-                                <button className="text-md  font-semibold font-madimi px-3 py-1  active:scale-90 hidden sm:block  cursor-pointer">Sign up</button>
+                                <button className="text-md font-semibold font-madimi px-3 py-1 active:scale-90 hidden sm:block cursor-pointer">Sign up</button>
                             </Link>
                         </div>
                     ) : (
-                        ////////---if the user login then show this profile icon and drop down menu to logout and see userName and Email
                         <div className="relative">
                             <IoPersonCircleSharp
                                 className="w-fit h-10 rounded-full cursor-pointer"
                                 onClick={() => setShowDropdown(!showDropdown)} />
                             {showDropdown && (
-                                <div className="absolute border  right-0 mt-2 w-fit bg-slatte-100 rounded-lg shadow-lg dark:bg-[#222] bg-slate-100">
+                                <div className="absolute border right-0 mt-2 w-fit bg-slate-100 rounded-lg shadow-lg dark:bg-[#222]">
                                     <div className="p-5">
-                                        <p className="text-sm font-medium text-gray-400  dark:text-slate-400 flex gap-2 items-center">Name: <span className="dark:text-white/80 text-black/80 font-normal">{user.name}</span></p>
-                                        <p className="text-sm font-medium text-gray-400  dark:text-slate-400 flex gap-2 items-center">Email: <span className="dark:text-white/80 text-black/80 font-normal">{user.email}</span></p>
-
-                                        {user.email == "kaiwanpharma@gmail.com" ? <Link onClick={() => setShowDropdown(!showDropdown)} href="/admin/dashboard" className="text-sm py-1 mt-2 text-center">Admin Page</Link> : null}
+                                        <p className="text-sm font-medium text-gray-400 dark:text-slate-400 flex gap-2 items-center">Name: <span className="dark:text-white/80 text-black/80 font-normal">{user.name}</span></p>
+                                        <p className="text-sm font-medium text-gray-400 dark:text-slate-400 flex gap-2 items-center">Email: <span className="dark:text-white/80 text-black/80 font-normal">{user.email}</span></p>
+                                        {user.email === "kaiwanpharma@gmail.com" && <Link onClick={() => setShowDropdown(!showDropdown)} href="/admin/dashboard" className="text-sm py-1 mt-2 text-center">Admin Page</Link>}
                                     </div>
                                     <div className="border-t border-gray-200 dark:border-gray-700"></div>
                                     <button
@@ -152,8 +138,8 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-            </nav >
-        </main>
+            </div>
+        </>
     );
 };
 
