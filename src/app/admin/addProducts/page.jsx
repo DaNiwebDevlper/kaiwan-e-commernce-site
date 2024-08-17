@@ -12,7 +12,7 @@ import 'react-quill/dist/quill.snow.css';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const CategoryOptions = [
-    'Whitening', 'Hair Care', 'Sunblock', 'Acne', 'Moisturizer', 'All'
+    'Bundles', 'Whitening', 'Hair Care', 'Sunblock', 'Acne', 'Moisturizer', 'All'
 ];
 
 const AddProduct = () => {

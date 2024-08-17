@@ -10,54 +10,6 @@ import { addToCart } from "@/redux/slice/CartSlice";
 import Loader from "@/components/admin-panel/Loader";
 import Link from "next/link";
 
-// export async function generateMetadata({ params }) {
-//     try {
-//         const baseUrl ="http://localhost:3000";
-
-//         const response = await axios.get(`${baseUrl}/api/products/${params.id}`);
-//         const product = response.data;
-
-//         if (!product) {
-//             return {
-//                 title: "Page Not Found",
-//                 description: "The page you are looking for does not exist.",
-//             };
-//         }
-
-//         return {
-//             title: product.productName || "Products",
-//             description: product.productDetail || "Find the best products here!",
-//             openGraph: {
-//                 title: product.productName || "Products",
-//                 description: product.productDetail || "Find the best products here!",
-//                 images: [
-//                     {
-//                         url: product.productImage,
-//                         alt: product.productName,
-//                     },
-//                 ],
-//                 url: `${baseUrl}/products/${product._id}`,
-//             },
-//             twitter: {
-//                 title: product.productName || "Products",
-//                 description: product.productDetail || "Find the best products here!",
-//                 images: [
-//                     {
-//                         url: product.productImage,
-//                         alt: product.productName,
-//                     },
-//                 ],
-//             },
-//         };
-//     } catch (error) {
-//         console.error("Error generating metadata:", error.response ? error.response.data : error.message);
-
-//         return {
-//             title: "Error",
-//             description: "An error occurred while generating the page metadata.",
-//         };
-//     }
-// }
 
 const ProductDetails = () => {
     const params = useParams();
@@ -86,7 +38,7 @@ const ProductDetails = () => {
 
                             {/* ////--Product Image */}
                             <div className="sm:w-[400px] sm:h-[400px] overflow-hidden  rounded-2xl">
-                                <Image src={`${product.productImage}`} alt="product img" width={400} height={400} className="hover:scale-150 transition-all object-cover" />
+                                <Image src={`${product.productImage}`} alt="product img" width={400} height={400} loading="lazy" className="hover:scale-150 transition-all object-cover" />
                             </div>
 
                             {/* /////--Product Details */}
@@ -115,9 +67,9 @@ const ProductDetails = () => {
 
                         {/* ////// product description */}
                         <div className="sm:w-[80%]">
-                            <h1 className="text-xl font-bold">Description:</h1>
+                            <h1 className="text-3xl font-bold pb-3">Description:</h1>
                             <div
-                                className="product-description text-sm "
+                                className="product-description"
                                 dangerouslySetInnerHTML={{ __html: product.productDetail }}
                             />
                         </div>

@@ -8,30 +8,31 @@ import Image from "next/image";
 import { TbTruckDelivery } from "react-icons/tb";
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { SlHandbag } from "react-icons/sl";
 import { IoPersonCircleSharp } from "react-icons/io5";
+import { clearUser, selectUser, setUser } from "@/redux/slice/userLogin";
 
 const Navbar = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
-    const [user, setUser] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const router = useRouter();
 
     const cartItems = useAppSelector(state => state.cart.cart);
-
+    const dispatch = useAppDispatch()
+    const user = useAppSelector(selectUser);
     useEffect(() => {
         const userCookie = Cookies.get('user');
         if (userCookie) {
-            setUser(JSON.parse(userCookie));
+            dispatch(setUser(JSON.parse(userCookie)));
         }
-    }, []);
+    }, [dispatch]);
 
     const handleLogout = () => {
         Cookies.remove('token');
         Cookies.remove('user');
-        setUser(null);
+        dispatch(clearUser());
         router.push('/login');
     };
 
@@ -103,6 +104,7 @@ const Navbar = () => {
                         </Link>
                         {cartItems.length > 0 && <small className="text-rose-500 pt-1">({cartItems.length})</small>}
                     </div>
+                    {/* /// dark mode */}
                     <ThemeSwitcher />
 
                     {!user ? (

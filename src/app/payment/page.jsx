@@ -1,5 +1,4 @@
 'use client'
-import { useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks/hooks'
 
 const Payment = () => {
@@ -21,11 +20,11 @@ const Payment = () => {
                 ) : (
                     <div>
                         <p className='text-lg font-semibold mb-2'>Please transfer the amount to the following bank account:</p>
-                        <p><b>Acc Title:</b>KAIWAN</p>
+                        <p className='flex gap-1'><span className='pl-1 font-bold'>Acc Title: </span>KAIWAN</p>
                         <p>Bank Alfalah- Mianwali Branch</p>
-                        <p><b>Account Number:</b>01721008945121</p>
-                        <p><b>IBAN:</b> PK46ALFH0172001008945121</p>
-                        <p><b>Branch Code:</b> 0172</p>
+                        <p className='flex gap-1'><span className='pl-1 font-bold'>Account Number:</span>01721008945121</p>
+                        <p className='flex gap-1'><span className='pl-1 font-bold'>IBAN: </span>PK46ALFH0172001008945121</p>
+                        <p className='flex gap-1'><span className='pl-1 font-bold'>Branch Code:</span> 0172</p>
                         <div className='border border-rose-500 p-3 my-5'>
                             <p className='text-xl font-semibold text-rose-500 mb-2'>
                                 Note:
