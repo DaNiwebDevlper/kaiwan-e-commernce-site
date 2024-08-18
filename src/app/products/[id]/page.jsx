@@ -69,7 +69,7 @@ const ProductDetails = () => {
                         <div className="sm:w-[80%]">
                             <h1 className="text-3xl font-bold pb-3">Description:</h1>
                             <div
-                                className="product-description"
+                                className="product-description text-justify"
                                 dangerouslySetInnerHTML={{ __html: product.productDetail }}
                             />
                         </div>

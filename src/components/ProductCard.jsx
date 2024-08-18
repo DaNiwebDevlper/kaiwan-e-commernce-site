@@ -7,11 +7,18 @@ import Image from 'next/image'
 const ProductCard = ({ id, title, imgSrc, price, quantity, discount, sale }) => {
     const dispatch = useAppDispatch()
     return (
-        <main className={`sm:w-[250px] w-[92%] h-fit shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3`}>
+        <main className={`sm:w-[250px] w-[92%] sm:min-h-[400px] min-h-[300px] shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3 justify-between`}>
+
+            {/* product sale button */}
+            {sale && (
+                <div className="bg-green-500 text-white font-bold font-mono rounded-full absolute sm:top-[-10px] top-[-7px] left-[-7px] sm:left-[-10px] z-20 sm:text-[12px] text-[12px] text-center flex justify-center items-center sm:min-size-[50px] max-size-[70px] size-[50px] px-1">
+                    <p>{sale}</p>
+                </div>
+            )}
             <div className="overflow-hidden">
                 <Link href={`/products/${id}`} className='relative'>
                     <Image src={imgSrc} width={200} height={150} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
-                    {!sale ? "" : <div className="w-fit bg-rose-500 text-white font-semibold font-mono py-1 px-3 rounded-lg absolute top-2 right-2 text-sm">{sale}</div>}
+
                 </Link>
             </div>
             <div className="flex flex-col justify-center items-center gap-y-2 px-1">

@@ -25,20 +25,28 @@ const FeaturedProducts = () => {
         <div className="min-h-screen my-9 flex flex-col items-center justify-center">
             <h1 className="sm:text-4xl text-3xl font-bold font-mono my-5 mb-10  text-center">Featured Products</h1>
             {loading && <Loader />}
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-5 place-content-center pl-3">
+
+            {/* //// product list */}
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:gap-5 gap-y-9 place-content-center pl-3">
                 {products.map((data, i) => (
-                    <div className="sm:w-[250px] w-[92%] h-fit  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl p-3" key={i} >
+                    <div className="sm:w-[250px] w-[92%] sm:min-h-[400px] min-h-[300px]  shadow dark:shadow-white/30 shrink-0 flex flex-col gap-3 transition-all duration-300 transform rounded-xl justify-between p-3" key={i} >
+                        {data.sale && (
+                            <div className="bg-green-500 text-white font-bold font-mono rounded-full absolute sm:top-[-10px] top-[-7px] left-[-7px] sm:left-[-10px] z-20 sm:text-[12px] text-[12px] text-center flex justify-center items-center sm:min-size-[50px] max-size-[70px] size-[50px] px-1">
+                                <p>{data.sale}</p>
+                            </div>
+                        )}
+
                         <div className="overflow-hidden">
                             {/* product image */}
                             <Link href={`/products/${data._id}`} className='relative'>
                                 <Image src={data.productImage} width={200} height={150} alt='card img' className='sm:w-[330px] rounded-lg sm:h-[250px] w-[200px] h-[150px] cursor-pointer hover:scale-150 transition-all duration-200' loading='lazy' />
-                                {!data.sale ? "" : <div className="w-fit bg-rose-500 text-white font-semibold font-mono py-1 px-3 rounded-lg absolute top-2 right-2 text-sm">{data.sale}</div>}
+
                             </Link>
                         </div>
                         <div className="flex flex-col justify-center gap-y-2 px-1 items-center">
                             {/* prodcut name */}
                             <h1 className='sm:text-[18px] text-[13px] font-semibold font-sarif'>{data.productName}</h1>
-
+                            {/* product price */}
                             <div className="flex justify-center items-center gap-x-2">
                                 <p className='flex items-center gap-x-2'>
                                     {data.productQuantity == 0 ? '' : <span className='text-[14px] sm:text-lg line-through text-gray-500'>Rs {data.productDiscountPrice}</span>}
