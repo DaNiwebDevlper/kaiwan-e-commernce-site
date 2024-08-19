@@ -25,6 +25,7 @@ const ViewCartPage = () => {
 
     /// add logoout feature
     const handleCheckout = () => {
+        route.push('/checkout')
         if (cartItems.length === 0) {
             route.push('/products')
         }
