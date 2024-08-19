@@ -25,12 +25,6 @@ const ViewCartPage = () => {
 
     /// add logoout feature
     const handleCheckout = () => {
-        if (!user) {
-            route.push('/login');
-
-        } else {
-            route.push('/checkout');
-        }
         if (cartItems.length === 0) {
             route.push('/products')
         }
@@ -76,16 +70,16 @@ const ViewCartPage = () => {
                                 return (
                                     <div className="w-[100%] flex gap-x-5 sm:border border-b p-4  items-center relative" key={index}>
                                         <button>
-                                            <MdCancel className='text-xl text-red-500 absolute top-3 right-3' onClick={() => handleRemove(cartData)} />
+                                            <MdCancel className='text-xl text-red-500 absolute sm:top-3 top-0 right-3' onClick={() => handleRemove(cartData)} />
                                         </button>
                                         <div className="">
-                                            <Image src={cartData.imgSrc} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px]' />
+                                            <Image src={cartData.imgSrc} alt='product img' width={100} height={100} className='rounded-lg shadow-md size-[100px] sm:size-[120px]' />
                                         </div>
 
 
                                         <div className="flex flex-col gap-y-2
                                     ">
-                                            <h1 className='text-xl font-semibold font-mono'>{cartData.title}</h1>
+                                            <h1 className='sm:text-xl text-md font-semibold font-mono'>{cartData.title}</h1>
                                             {/* ///////--Quantity Container--////// */}
                                             <div className="border justify-evenly items-center flex w-[110px] h-[40px] overflow-hidden">
                                                 <button onClick={() => handleIncrease(cartData)} className='text-xl w-[33%] text-center border-r p-3'>+</button>

@@ -6,9 +6,10 @@ import App from "./App";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GoogleTagManager from "@/components/GoogleTagManager";
+import GoogleTagManagerNoScript from "@/components/GoogleTagManagerNoScript";
 
-const poppins = Lato({ subsets: ["latin"], weight: ['300', '400', '700', '900'] });
-
+const lato = Lato({ subsets: ["latin"], weight: ['300', '400', '700', '900'] });
 
 export async function generateMetadata() {
   return {
@@ -42,13 +43,14 @@ export async function generateMetadata() {
   };
 }
 
-
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
-
-      <body className={poppins.className}>
+      <head>
+        <GoogleTagManager />
+      </head>
+      <body className={lato.className}>
+        <GoogleTagManagerNoScript />
         <div className="relative">
           <Providers>
             <App>
@@ -59,7 +61,6 @@ export default function RootLayout({ children }) {
             </App>
           </Providers>
         </div>
-
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
