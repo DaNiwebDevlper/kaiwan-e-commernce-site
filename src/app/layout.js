@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import GoogleTagManagerNoScript from "@/components/GoogleTagManagerNoScript";
+import FacebookPixel from "@/components/FacebookPixel";
+import FacebookPixelNoScript from "@/components/FacebookNoScript";
 
 const lato = Lato({ subsets: ["latin"], weight: ['300', '400', '700', '900'] });
 
@@ -48,9 +50,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <GoogleTagManager />
+        {/* <!-- Meta Pixel Code --> */}
+        <FacebookPixel />
+        {/* <!-- End Meta Pixel Code --> */}
       </head>
       <body className={lato.className}>
         <GoogleTagManagerNoScript />
+        <FacebookPixelNoScript />
         <div className="relative">
           <Providers>
             <App>
